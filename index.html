@@ -4,15 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css">
     <title>Sistema de Inscripciones</title>
   </head>
   <body>
-    <nav class="navbar" style="background-color: #95404C;">
+    <nav class="navbar">
       <div class="container-fluid">
         <a class="navbar-brand">
           <img src="assets/images/logoviadiseno.jpg" alt="Logo ViaDiseno" width="30" height="30">
         </a>  
-        <span class="navbar-brand mb-0 h1" style="color: azure;">Sistema de Inscripciones</span>
+        <span class="navbar-brand mb-0 h1">Sistema de Inscripciones</span>
         <a class="navbar-brand">
           <img src="assets/images/person-circle.svg" alt="Avatar" width="30" height="30">
         </a> 
@@ -216,6 +217,152 @@
 
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
           <h3 class="text-center mt-5">Horario</h3>
+          <div class="table-responsive">
+            <table class="table custom-table p-3 table-striped">
+                <thead>
+                    <tr>
+                        <th class="row-width-hour hour"></th>
+                        <th class="row-width">Lunes</th>
+                        <th class="row-width">Martes</th>
+                        <th class="row-width">Miercoles</th>
+                        <th class="row-width">Jueves</th>
+                        <th class="row-width">Viernes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                      <th rowspan="2" class="hour">7</th>
+                      <td class="bg-salmon" rowspan="2"></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <th rowspan="2" class="hour">8</th>
+                      <td class="bg-salmon" rowspan="2"></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <th rowspan="2" class="hour">9</th>
+                      <td class="bg-purple" rowspan="2"></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <th rowspan="2" class="hour">10</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <th rowspan="2" class="hour">11</th>
+                      <td></td>
+                      <td class="bg-purple" rowspan="2"></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <th rowspan="2" class="hour">12</th>
+                      <td></td>
+                      <td class="bg-pink" rowspan="2"></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <th rowspan="2" class="hour">13</th>
+                      <td></td>
+                      <td></td>
+                      <td class="bg-green" rowspan="2"></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <th rowspan="2" class="hour">14</th>
+                      <td></td>
+                      <td></td>
+                      <td class="bg-green" rowspan="2"></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <th rowspan="2" class="hour">15</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td class="bg-blue" rowspan="2"></td>
+                      <td class="bg-pink" rowspan="2"></td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="d-flex justify-content-end mt-3">
+            <button class="btn btn-secondary me-2">Agregar materia</button>
+            <button class="btn btn-primary">Confirmar</button>
+          </div>
         </div>
       </div>
     </div>
