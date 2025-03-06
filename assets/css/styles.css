@@ -22,8 +22,8 @@
     border-color: #95404C;
 }
 
-:hover.btn-primary {
-    background-color: #95404C;
+.btn-primary:hover{
+    background-color: #581c24;
     border-color: #95404C;
 }
 
