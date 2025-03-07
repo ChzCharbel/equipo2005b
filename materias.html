@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <title>Inscripciones de alumnos</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand">
+          <img
+            src="assets/images/logoviadiseno.jpg"
+            alt="Logo ViaDiseno"
+            width="60"
+            height="60"
+          />
+        </a>
+        <span class="navbar-brand mb-0 h1">Inscripciones de alumnos</span>
+        <a class="navbar-brand">
+          <img
+            src="assets/images/person-circle.svg"
+            alt="Avatar"
+            width="50"
+            height="50"
+          />
+        </a>
+      </div>
+    </nav>
+    <br />
+
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasWithBothOptions"
+      aria-controls="offcanvasWithBothOptions"
+    >
+      burger
+    </button>
+
+    <div
+      class="offcanvas offcanvas-start"
+      data-bs-scroll="true"
+      tabindex="-1"
+      id="offcanvasWithBothOptions"
+      aria-labelledby="offcanvasWithBothOptionsLabel"
+    >
+      <div class="offcanvas-header">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column p-0">
+        <div
+          class="btn-group-vertical w-100 rounded-0"
+          role="group"
+          aria-label="Menú de navegación vertical"
+        >
+          <input
+            type="radio"
+            class="btn-check"
+            name="menu-option"
+            id="menu-inicio"
+            autocomplete="off"
+            checked
+          />
+          <label
+            class="btn btn-outline-danger w-100 rounded-0 fs-2"
+            for="menu-inicio"
+            >Inicio</label
+          >
+
+          <input
+            type="radio"
+            class="btn-check"
+            name="menu-option"
+            id="menu-maestros"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-danger w-100 rounded-0 fs-2"
+            for="menu-maestros"
+            >Maestros</label
+          >
+
+          <input
+            type="radio"
+            class="btn-check"
+            name="menu-option"
+            id="menu-planes"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-danger w-100 rounded-0 fs-2"
+            for="menu-planes"
+            >Planes</label
+          >
+
+          <input
+            type="radio"
+            class="btn-check"
+            name="menu-option"
+            id="menu-materias"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-danger w-100 rounded-0 fs-2"
+            for="menu-materias"
+            >Materias</label
+          >
+
+          <input
+            type="radio"
+            class="btn-check"
+            name="menu-option"
+            id="menu-alumnos"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-danger w-100 rounded-0 fs-2"
+            for="menu-alumnos"
+            >Alumnos</label
+          >
+        </div>
+
+        <div class="flex-grow-1"></div>
+
+        <div class="w-100">
+          <input
+            type="radio"
+            class="btn-check"
+            name="menu-option"
+            id="menu-salir"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-danger w-100 rounded-0 fs-2"
+            for="menu-salir"
+            >Salir</label
+          >
+        </div>
+      </div>
+    </div>
+
+    <br /><br />
+    <div class="container">
+      <div class="card" style="width: 18rem">
+        <img
+          src="./assets/images/95404c.png"
+          class="card-img-top"
+          alt="color"
+          height="150"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Confeccion de Prendas Basicas</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Profesor:</li>
+          <li class="list-group-item">Horario</li>
+          <li class="list-group-item">Salon</li>
+        </ul>
+      </div>
+      <br/>
+      <div class="card" style="width: 18rem">
+        <img
+          src="./assets/images/95404c.png"
+          class="card-img-top"
+          alt="color"
+          height="150"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Confeccion de Prendas Basicas</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Profesor:</li>
+          <li class="list-group-item">Horario</li>
+          <li class="list-group-item">Salon</li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
