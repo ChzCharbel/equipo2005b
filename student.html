@@ -4,92 +4,146 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/student.css">
+    <link rel="stylesheet" href="assets/css/student.css" />
     <title>Inscripciones de alumnos</title>
   </head>
   <body>
     <nav class="navbar">
       <div class="container-fluid">
         <a class="navbar-brand">
-          <img src="assets/images/logoviadiseno.jpg" alt="Logo ViaDiseno" width="60" height="60">
-        </a>  
+          <img
+            src="assets/images/logoviadiseno.jpg"
+            alt="Logo ViaDiseno"
+            width="60"
+            height="60"
+          />
+        </a>
         <span class="navbar-brand mb-0 h1">Inscripciones de alumnos</span>
         <a class="navbar-brand">
-          <img src="assets/images/person-circle.svg" alt="Avatar" width="50" height="50">
-        </a> 
+          <img
+            src="assets/images/person-circle.svg"
+            alt="Avatar"
+            width="50"
+            height="50"
+          />
+        </a>
       </div>
     </nav>
-    <br>
+    <br />
 
-    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">burger</button>
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasWithBothOptions"
+      aria-controls="offcanvasWithBothOptions"
+    >
+      Menú
+    </button>
 
-    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-        <div class="offcanvas-header">
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <div
+      class="offcanvas offcanvas-start"
+      data-bs-scroll="true"
+      tabindex="-1"
+      id="offcanvasWithBothOptions"
+      aria-labelledby="offcanvasWithBothOptionsLabel"
+    >
+      <div class="offcanvas-header">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column p-0">
+        <div
+          class="btn-group-vertical w-100 rounded-0"
+          role="group"
+          aria-label="Menú de navegación vertical"
+        >
+          <a
+            href="index.html"
+            class="btn btn-outline-danger w-100 rounded-0 fs-2"
+            >Inicio</a
+          >
+          <a
+            href="indexcoo.html"
+            class="btn btn-outline-danger w-100 rounded-0 fs-2"
+            >Maestros</a
+          >
+          <a
+            href="plan.html"
+            class="btn btn-outline-danger w-100 rounded-0 fs-2"
+            >Planes</a
+          >
+          <a
+            href="materias.html"
+            class="btn btn-outline-danger w-100 rounded-0 fs-2"
+            >Materias</a
+          >
+          <a
+            href="student.html"
+            class="btn btn-outline-danger w-100 rounded-0 fs-2"
+            >Alumnos</a
+          >
         </div>
-        <div class="offcanvas-body d-flex flex-column p-0">
-          <div class="btn-group-vertical w-100 rounded-0" role="group" aria-label="Menú de navegación vertical">
-            <input type="radio" class="btn-check" name="menu-option" id="menu-inicio" autocomplete="off" checked>
-            <label class="btn btn-outline-danger w-100 rounded-0 fs-2" for="menu-inicio">Inicio</label>
-            
-            <input type="radio" class="btn-check" name="menu-option" id="menu-maestros" autocomplete="off">
-            <label class="btn btn-outline-danger w-100 rounded-0 fs-2" for="menu-maestros">Maestros</label>
-            
-            <input type="radio" class="btn-check" name="menu-option" id="menu-planes" autocomplete="off">
-            <label class="btn btn-outline-danger w-100 rounded-0 fs-2" for="menu-planes">Planes</label>
-            
-            <input type="radio" class="btn-check" name="menu-option" id="menu-materias" autocomplete="off">
-            <label class="btn btn-outline-danger w-100 rounded-0 fs-2" for="menu-materias">Materias</label>
-            
-            <input type="radio" class="btn-check" name="menu-option" id="menu-alumnos" autocomplete="off">
-            <label class="btn btn-outline-danger w-100 rounded-0 fs-2" for="menu-alumnos">Alumnos</label>
-          </div>
-          
-          <div class="flex-grow-1"></div>
-          
-          <div class="w-100">
-            <input type="radio" class="btn-check" name="menu-option" id="menu-salir" autocomplete="off">
-            <label class="btn btn-outline-danger w-100 rounded-0 fs-2" for="menu-salir">Salir</label>
-          </div>
+
+        <div class="flex-grow-1"></div>
+
+        <div class="w-100">
+          <a
+            href="login.html"
+            class="btn btn-outline-danger w-100 rounded-0 fs-2"
+            >Salir</a
+          >
         </div>
+      </div>
     </div>
-    <br>
-    <br>
+    <br />
+    <br />
 
     <nav class="navbar bg-body-tertiary search-nav">
-        <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid">
-              <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Buscar alumno" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Buscar</button>
-              </form>
-            </div>
-          </nav>
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Buscar alumno"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Buscar
+            </button>
+          </form>
+        </div>
+      </nav>
     </nav>
-    
+
     <div class="form-container">
       <select class="form-select" size="10" aria-label="Size 20 select example">
-          <option selected>Alumnos:</option>
-          <option value="1">Jorge Cáceres Ochoa</option>
-          <option value="2">Mariana López Herrera</option>
-          <option value="3">Ricardo Gómez Nieto</option>
-          <option value="4">Fernanda Ruiz Salgado</option>
-          <option value="5">Alejandro Torres Velasco</option>
-          <option value="6">Laura Méndez Rivas</option>
-          <option value="7">Daniel Vázquez Ortega</option>
-          <option value="8">Gabriela Sánchez Pineda</option>
-          <option value="9">José Luis Perea Castro</option>
-          <option value="10">Valeria Ortega Román</option>
-          <option value="11">Sebastián Herrera Núñez</option>
-          <option value="12">Camila Estrada Lozano</option>
-          <option value="13">Andrés Velázquez Quiróz</option>
-          <option value="14">Natalia Ríos Jiménez</option>
-          <option value="15">Juan Pablo Pérez Galván</option>
-          <option value="16">Sofía Delgado Varela</option>
-          <option value="17">Iván Morales Fuentes</option>
-          <option value="18">Andrea Gutiérrez Salas</option>
-          <option value="19">Emiliano Castro Hernández</option>
-          <option value="20">Paulina Ramos Cervantes</option>
+        <option selected>Alumnos:</option>
+        <option value="1">Jorge Cáceres Ochoa</option>
+        <option value="2">Mariana López Herrera</option>
+        <option value="3">Ricardo Gómez Nieto</option>
+        <option value="4">Fernanda Ruiz Salgado</option>
+        <option value="5">Alejandro Torres Velasco</option>
+        <option value="6">Laura Méndez Rivas</option>
+        <option value="7">Daniel Vázquez Ortega</option>
+        <option value="8">Gabriela Sánchez Pineda</option>
+        <option value="9">José Luis Perea Castro</option>
+        <option value="10">Valeria Ortega Román</option>
+        <option value="11">Sebastián Herrera Núñez</option>
+        <option value="12">Camila Estrada Lozano</option>
+        <option value="13">Andrés Velázquez Quiróz</option>
+        <option value="14">Natalia Ríos Jiménez</option>
+        <option value="15">Juan Pablo Pérez Galván</option>
+        <option value="16">Sofía Delgado Varela</option>
+        <option value="17">Iván Morales Fuentes</option>
+        <option value="18">Andrea Gutiérrez Salas</option>
+        <option value="19">Emiliano Castro Hernández</option>
+        <option value="20">Paulina Ramos Cervantes</option>
       </select>
     </div>
 
