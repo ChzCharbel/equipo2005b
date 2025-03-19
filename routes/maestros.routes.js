@@ -1,7 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
+const maestrosController = require('../controllers/maestros.controller');
+
 const maestros = [];
+
+router.get('/allmaestros', maestrosController.get_all_maestros);
 
 // GET /maestros
 router.get('/maestros', (request, response, next) => {
@@ -17,3 +21,6 @@ router.post('/maestros', (request, response, next) => {
         maestros: maestros
     });
 });
+
+
+module.exports = router;

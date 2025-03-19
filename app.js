@@ -1,12 +1,13 @@
 const express = require('express');
 const app = express();
 
-/* const path = require('path');
+const path = require('path');
+
+app.set('views', 'views');
+app.set('view engine', 'ejs');
+
 app.use(express.static(path.join(__dirname, 'public'))); 
 
-app.set('view engine', 'ejs');
-app.set('views', 'views');
- */
 const session = require('express-session');
 
 app.use(session({
@@ -19,27 +20,24 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({extended: false}));
 
-/* const usersRoutes = require('./routes/usersRoutes');
-app.use('/users', usersRoutes); */
+const usersRoutes = require('./routes/users.routes');
+app.use('/users', usersRoutes); 
+
+const alumnosRoutes = require('./routes/alumnos.routes');
+app.use(alumnosRoutes);
+
+const maestrosRoutes = require('./routes/maestros.routes');
+app.use(maestrosRoutes);
+
+const materiasRoutes = require('./routes/materias.routes');
+app.use(materiasRoutes);
 
 app.use((request, response, next) => {
-    console.log('Middleware!');
-
-    //Le permite a la petición avanzar hacia el siguiente middleware
-    next(); 
-});
-
-app.get('/ivd', (request, response, next) => {
-    response.send('Ya entró');
-    next(); 
-});
-
-app.use((request, response, next) => {
-    console.log('Otro middleware!');
+    console.log('Último middleware');
     
     //Manda la respuesta
     //response.statusCode = 404;
-    response.send('¡Hola mundo!'); 
+    response.send('Último middleware'); 
 });
 
 app.listen(3000);
