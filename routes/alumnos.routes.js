@@ -5,6 +5,6 @@ const alumnosController = require('../controllers/alumnos.controller');
 
 router.get('/alumnosregulares', alumnosController.get_horario_alumnos_regulares);
 
-router.get('/alumnos',alumnosController.get_alumnos);
+router.get('/alumnos', alumnosController.get_alumnos);
 
 module.exports = router;

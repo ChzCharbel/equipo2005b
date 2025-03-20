@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+const {getUserById} = require('./util/admin.api.client');
+
 const path = require('path');
 
 app.set('views', 'views');
@@ -22,6 +24,16 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 const usersRoutes = require('./routes/users.routes');
 app.use('/users', usersRoutes); 
+
+app.get('/v1/users/find_one/:id', async (req, res) => {
+    try {
+        const user = await getUserById(req.params.id)
+        res.send(user)
+    } catch (error) {
+        console.error(error)
+        res.status(500).send('Error fetching user')
+    }
+})
 
 const alumnosRoutes = require('./routes/alumnos.routes');
 app.use(alumnosRoutes);

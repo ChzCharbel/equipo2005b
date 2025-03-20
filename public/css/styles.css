@@ -78,6 +78,7 @@
 #loginBody {
     background-image: url(/images/background.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
     background-position: center top;
 }
 
@@ -90,8 +91,4 @@
 
 #loginCard {
     width: 22rem;
-}
-
-#loginButton{
-    margin-left: 90px;
 }

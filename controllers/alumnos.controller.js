@@ -3,5 +3,5 @@ exports.get_horario_alumnos_regulares = (request, response, next) => {
 };
 
 exports.get_alumnos = (request, response, next) => {
-    response.render('alumnos.ejs');
-};
+    response.render('alumnos');
+}; 
