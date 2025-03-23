@@ -44,6 +44,9 @@ app.use(maestrosRoutes);
 const materiasRoutes = require('./routes/materias.routes');
 app.use(materiasRoutes);
 
+const planesRoutes = require('./routes/planes.routes');
+app.use(planesRoutes);
+
 app.use((request, response, next) => {
     console.log('Último middleware');
     

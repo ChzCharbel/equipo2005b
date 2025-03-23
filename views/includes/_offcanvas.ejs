@@ -2,10 +2,13 @@
 
     <body>
         <br />
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+        <div class="container-fluid">
+            <button class="btn btn-primary material-symbols-outlined" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-            Menú
-        </button>
+                menu
+            </button>
+        </div>
+        
 
         <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
             aria-labelledby="offcanvasWithBothOptionsLabel">
@@ -15,16 +18,16 @@
             <div class="offcanvas-body d-flex flex-column p-0">
                 <div class="btn-group-vertical w-100 rounded-0" role="group" aria-label="Menú de navegación vertical">
                     <a href="index.html" class="btn btn-outline-danger w-100 rounded-0 fs-2">Inicio</a>
-                    <a href="indexcoo.html" class="btn btn-outline-danger w-100 rounded-0 fs-2">Maestros</a>
-                    <a href="plan.html" class="btn btn-outline-danger w-100 rounded-0 fs-2">Planes</a>
-                    <a href="materias.html" class="btn btn-outline-danger w-100 rounded-0 fs-2">Materias</a>
-                    <a href="student.html" class="btn btn-outline-danger w-100 rounded-0 fs-2">Alumnos</a>
+                    <a href="/allmaestros" class="btn btn-outline-danger w-100 rounded-0 fs-2">Maestros</a>
+                    <a href="/plan" class="btn btn-outline-danger w-100 rounded-0 fs-2">Planes</a>
+                    <a href="/materias" class="btn btn-outline-danger w-100 rounded-0 fs-2">Materias</a>
+                    <a href="/alumnos" class="btn btn-outline-danger w-100 rounded-0 fs-2">Alumnos</a>
                 </div>
 
                 <div class="flex-grow-1"></div>
 
                 <div class="w-100">
-                    <a href="login.html" class="btn btn-outline-danger w-100 rounded-0 fs-2">Salir</a>
+                    <a href="/users/logout" class="btn btn-outline-danger w-100 rounded-0 fs-2">Salir</a>
                 </div>
             </div>
         </div>

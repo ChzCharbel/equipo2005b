@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <title>Sistema de Inscripciones</title>
 </head>
 
@@ -15,9 +16,26 @@
             <a class="navbar-brand">
                 <img src="/images/logoviadiseno.jpg" alt="Logo ViaDiseno" width="60" height="60">
             </a>
-            <span class="navbar-brand mb-0 h1">Sistema de Inscripciones</span>
-            <a class="navbar-brand">
-                <img src="/images/person-circle.svg" alt="Avatar" width="50" height="50">
-            </a>
+            <% if (ruta == "alumnos") { %>
+                <span class="navbar-brand mb-0 h1">Alumnos</span>
+            <% } else if (ruta == "alumnos_regulares") { %>
+                <span class="navbar-brand mb-0 h1">Mi horario</span>
+            <% } else if (ruta == "maestros") { %>
+                <span class="navbar-brand mb-0 h1">Maestros</span>
+            <% } else if (ruta == "plan") { %>
+                <span class="navbar-brand mb-0 h1">Plan de estudio</span>
+            <% } else if (ruta == "materias") { %>
+                <span class="navbar-brand mb-0 h1">Materias</span>
+            <% } else { %>
+                <span class="navbar-brand mb-0 h1">Sistema de Inscripciones</span>
+            <% } %>
+            <span>
+                <a class="navbar-brand material-symbols-outlined fs-2">
+                    notifications
+                </a>
+                <a class="navbar-brand material-symbols-outlined fs-1">
+                    account_circle
+                </a>
+            </span>
         </div>
     </nav>

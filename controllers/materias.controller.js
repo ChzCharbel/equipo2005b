@@ -1,3 +1,5 @@
 exports.get_materias = (request, response, next) => {
-    response.render('materias.ejs');
+    response.render('materias.ejs', {
+        ruta: 'materias'
+    });
 };
