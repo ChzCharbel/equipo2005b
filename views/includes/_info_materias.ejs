@@ -1,5 +1,19 @@
 <br /><br />
 <div class="container">
+    <%  for (let materia of materias) { %>
+            <div class="card" style="width: 18rem">
+                <img src="/images/95404c.png" class="card-img-top" alt="color" height="150" />
+                <div class="card-body">
+                    <h5 class="card-title"><%= materia.nombreMateria %></h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Profesor: </li>
+                    <li class="list-group-item">Horario</li>
+                    <li class="list-group-item">Salon</li>
+                </ul>
+            </div>
+    <% } %>
+
     <div class="card" style="width: 18rem">
         <img src="/images/95404c.png" class="card-img-top" alt="color" height="150" />
         <div class="card-body">

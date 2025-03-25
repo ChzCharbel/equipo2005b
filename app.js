@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 
-const {getUserById} = require('./util/admin.api.client');
+const db= require('./util/database.js');
+const {getUserById, getUserGroups, getAcademicHistory} = require('./util/admin.api.client');
 
 const path = require('path');
 
@@ -34,6 +35,36 @@ app.get('/v1/users/find_one/:id', async (req, res) => {
         res.status(500).send('Error fetching user')
     }
 })
+
+
+app.get('/v1/school_cycles/user_groups_index/:cycle_id/:user_ivd_id',
+    async (req, res) => {
+    try {
+        const userGroups = await getUserGroups(
+        req.params.cycle_id,
+        req.params.user_ivd_id,
+        )
+        res.send(userGroups)
+    } catch (error) {
+        console.error(error)
+        res.status(500).send('Error fetching user')
+        }
+    },
+)
+
+app.get('/v1/students/academic_history/:ivd_id',
+    async (req, res) => {
+    try {
+        const userGroups = await getAcademicHistory(
+        req.params.ivd_id,
+        )
+        res.send(userGroups)
+    } catch (error) {
+        console.error(error)
+        res.status(500).send('Error fetching user')
+        }
+    },
+)
 
 const alumnosRoutes = require('./routes/alumnos.routes');
 app.use(alumnosRoutes);

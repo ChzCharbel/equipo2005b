@@ -1,4 +1,10 @@
+const Usuario = require('../models/users.model');
+
 exports.get_login = (request, response, next) => {
+    /* Usuario.getUserById(100007).then((req, res) => {
+        console.log(res);
+    } 
+    )*/
     response.render('login.ejs',{
         isLoggedIn: request.session.isLoggedIn || false,
     });

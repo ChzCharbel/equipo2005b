@@ -8,7 +8,8 @@
     "express-session": "^1.18.1",
     "node-cache": "^5.1.2",
     "nodemon": "^3.1.9",
-    "pg": "^8.14.1"
+    "pg": "^8.14.1",
+    "pg-pool": "^3.8.0"
   },
   "name": "viadiseno",
   "version": "1.0.0",

@@ -29,6 +29,8 @@ async function getToken() {
     token = response.data.token;
     cache.set("token", token);
 
+    console.log(token);
+
     return token;
 }
 
@@ -41,6 +43,7 @@ function getHeaders(token) {
 async function getUserById(id) {
     const token = await getToken();
     const headers = getHeaders(token);
+    console.log(headers);
 
     const response = await axiosAdminClient.get("v1/users/find_one", {
         headers,
@@ -53,10 +56,84 @@ async function getUserById(id) {
     const jsonString = JSON.stringify(response.data);
     const parsedJson = JSON.parse(jsonString);
     // asi obtienes un atributo en especifico
-    //console.log(parsedJson.data.type);  
+    console.log(parsedJson.data.type);  
     return parsedJson;
 }
 
-//getUserById(100023);
+async function getUserGroups(cycle_id, user_ivd_id) {
+    const token = await getToken();
+    const headers = getHeaders(token);
 
-module.exports = { getUserById };
+    const response = await axiosAdminClient.get("v1/school_cycles/user_groups_index", {
+        headers,
+        params: {
+        id: cycle_id,
+        user_ivd_id,
+        },
+    });
+    console.log(response.data);
+
+    const jsonString = JSON.stringify(response.data);
+    const parsedJson = JSON.parse(jsonString);
+    console.log(parsedJson.data[0]);
+    return parsedJson.data[0];
+};
+
+async function getAcademicHistory(ivd_id){
+    const token = await getToken();
+    const headers = getHeaders(token);
+
+    const response = await axiosAdminClient.get("v1/students/academic_history", {
+        headers,
+        params: {
+        ivd_id,
+        },
+    });
+    //console.log(response.data);
+
+    const jsonString = JSON.stringify(response.data);
+    const parsedJson = JSON.parse(jsonString);
+    //console.log(parsedJson.data);
+    return parsedJson.data;
+};
+
+async function getAllCourses(){
+    const token = await getToken();
+    const headers = getHeaders(token);
+
+    const response = await axiosAdminClient.get("/v1/courses/all", {
+        headers,
+    });
+
+    const jsonString = JSON.stringify(response.data);
+    const parsedJson = JSON.parse(jsonString);
+    //console.log(parsedJson.data);
+    return parsedJson.data;
+};
+
+const grupo13 = (async () => {
+    const cuarto = await getUserGroups(13, 100007);
+    console.log(cuarto.room);
+});
+
+const historial100123 = (async () => {
+    const alumnoHistorial = await getAcademicHistory(100123);
+    //cada materia es un elemento del arreglo data
+    for (materia of alumnoHistorial){
+        console.log(materia.course_name);
+    }
+});
+
+const materias = (async () => {
+    const courses = await getAllCourses();
+    //cada materia es un elemento del arreglo data
+    for (materia of courses){
+        if (materia.name != 'Progra' && materia.name != 'Algoritmos'){
+            console.log(materia.name);
+        }
+    }
+});
+
+//getUserById(100023);
+//console.log(grupo13.room);
+module.exports = { getUserById, getUserGroups, getAcademicHistory, getAllCourses, getToken, getHeaders, axiosAdminClient };
