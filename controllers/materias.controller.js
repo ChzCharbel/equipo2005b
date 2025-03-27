@@ -1,11 +1,12 @@
 const Materia = require('../models/materias.model');
+const { getAllCourses } = require('../util/admin.api.client');
 
 exports.get_materias = (request, response, next) => {
-    Materia.fetchAll().then(materias => {
-        console.log(materias.rows);
+    Materia.getAllCourses().then(materias => {
+        console.log(materias);
         response.render('materias.ejs', {
         ruta: 'materias',
-        materias: materias.rows || [],
+        materias: materias || [],
         });
     });
     

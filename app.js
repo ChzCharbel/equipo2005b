@@ -79,11 +79,8 @@ const planesRoutes = require('./routes/planes.routes');
 app.use(planesRoutes);
 
 app.use((request, response, next) => {
-    console.log('Último middleware');
-    
-    //Manda la respuesta
-    //response.statusCode = 404;
-    response.send('Último middleware'); 
+    response.status(404).render('404', {pageTitle: 'Page Not Found'});
+ 
 });
 
 app.listen(3000);
