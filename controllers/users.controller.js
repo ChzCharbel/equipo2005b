@@ -50,7 +50,6 @@ exports.post_login = (request, response, next) => {
     Usuario.fetchOne(request.body.matriculaInput).then((usuario) => {
         console.log(usuario.rows);
         if(usuario.rows.length > 0) {
-            console.log('qlo2');
             const bcrypt = require('bcryptjs');
             console.log(usuario.rows[0]);
             bcrypt.compare(request.body.passwordInput, usuario.rows[0].password).then((doMatch) => {
