@@ -1,5 +1,6 @@
 exports.get_all_maestros = (request, response, next) => {
     response.render('profesores.ejs', {
-        titulo: 'maestros'
+        titulo: 'maestros',
+        privilegios: request.session.privilegios || [],
     });
 };
