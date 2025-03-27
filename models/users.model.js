@@ -85,8 +85,13 @@ module.exports = class Usuario{
         }
     }
 
-    static getPrivilegios(correo) {
+    static getRol(id) {
         return db.query(`SELECT p.nombre FROM "Accede" a, "Privilegio" p WHERE a."nombreRol" = 
             (SELECT rol FROM "Usuario" WHERE "correoInstitucional" = $1::text) AND a."idPrivilegio" = p."idPrivilegio";`, [correo]);
+    }
+
+    static getPrivilegios(id) {
+        return db.query(`SELECT p.nombre FROM "Accede" a, "Privilegio" p WHERE a."nombreRol" = 
+            (SELECT rol FROM "Usuario" WHERE "idIVD" = $1::text) AND a."idPrivilegio" = p."idPrivilegio";`, [id]);
     }
 }
