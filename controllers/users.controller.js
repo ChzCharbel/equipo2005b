@@ -60,7 +60,12 @@ exports.post_login = (request, response, next) => {
                         request.session.matricula = request.body.matriculaInput;
                         request.session.user_id = usuario.rows[0].idIVD;
                         return request.session.save((error) => {
-                            response.redirect('/alumnos');
+                            if (usuario.rows[0].rol == 'admin'){
+                                response.redirect('/alumnos');
+                            }
+                            else {
+                                response.redirect('/alumnos/regulares');
+                            }
                         });
                     }).catch((error) => {
                         console.log(error);

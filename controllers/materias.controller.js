@@ -5,7 +5,7 @@ exports.get_materias = (request, response, next) => {
     Materia.getAllCourses().then(materias => {
         console.log(materias);
         response.render('materias.ejs', {
-        ruta: 'materias',
+        titulo: 'materias',
         materias: materias || [],
         });
     });
