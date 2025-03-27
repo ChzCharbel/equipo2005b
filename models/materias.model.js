@@ -1,7 +1,4 @@
 const db = require('../util/database');
-const Pool = require('pg-pool');
-
-const pool = new Pool();
 
 module.exports = class Materia{
 
@@ -11,10 +8,10 @@ module.exports = class Materia{
     }
 
     static fetchAll() {
-        return pool.query(`Select * from "Materia";`);
+        return db.query(`Select * from "Materia";`);
     }
 
     static fetchOne(materiaId){
-        return pool.query(`Select * from "Materia" Where "idMateria" = $1::text;`, [materiaId]);
+        return db.query(`Select * from "Materia" Where "idMateria" = $1::text;`, [materiaId]);
     }
 }

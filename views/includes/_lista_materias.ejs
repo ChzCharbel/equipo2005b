@@ -3,15 +3,16 @@
         <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
             <h3 class="text-center mt-5">Materias</h3>
 
-            <!--Materia num1 -->
+
+            <!-- Materia num1 -->
+
             <div class="card m-3">
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
                             <h5 class="card-title">Ilustración Gráfica Digital (Illustrator)</h5>
                             <p class="card-text">Profesor Alberto Méndez Álvarez</p>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#modal1">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal1">
                                 Ver más
                             </button>
                         </div>
@@ -20,16 +21,15 @@
                 </div>
             </div>
 
-            <!-- Modal for Materia num1 -->
-            <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true">
+            <!-- Modal Principal -->
+            <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="modal2Label">Confección de prendas básicas</h1>
+                            <h1 class="modal-title fs-5" id="modal1Label">Ilustración Gráfica Digital (Illustrator)</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <!--aquí empieza el body del modal-->
                             <dl class="row">
                                 <dt class="col-sm-9">Nombre de Profesor:</dt>
                                 <dd class="col-sm-9">Alberto Méndez Álvarez</dd>
@@ -44,29 +44,49 @@
                                     </ul>
                                 </dd>
                             </dl>
-                            <!--CAMBIOS-->
-                            <div>
-                                <button type="button" class="btn btn-danger">Eliminar materia</button>
-                                <input class="btn btn-primary btn-cambiar-materia" type="button" value="Cambiar materia"
-                                    data-form-id="formulario1">
-                                <br>
-                                <form id="formulario1" class="form-cambio-materia" style="display: none;">
-                                    <div class="mb-3">
-                                        <label for="materia1" class="form-label">Materia por la que se solicita
-                                            cambiar:</label>
-                                        <input type="text" class="form-control input-materia" id="materia1"
-                                            aria-describedby="help1" required>
-                                        <div id="help1" class="form-text">Se enviará la información a coordinadores,
-                                            esperar respuesta de solicitud.</div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Enviar</button>
-                                </form>
-                                <!--FIN DE CAMBIOS-->
-                            </div>
-                            <!--aquí termina el body del modal-->
+
+                            <!-- Botón para abrir el modal de eliminación -->
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminar1">
+                                Eliminar Materia
+                            </button>
+
+                            <br><br>
+
+                            <!-- Botón para cambiar de materia -->
+                            <input class="btn btn-primary btn-cambiar-materia" type="button" value="Cambiar materia" data-form-id="formulario1">
+
+                            <!-- Formulario para cambio de materia -->
+                            <form id="formulario1" class="form-cambio-materia" style="display: none;">
+                                <div class="mb-3">
+                                    <label for="materia1" class="form-label">Materia por la que se solicita cambiar:</label>
+                                    <input type="text" class="form-control input-materia" id="materia1" aria-describedby="help1" required>
+                                    <div id="help1" class="form-text">Se enviará la información a coordinadores, esperar respuesta de solicitud.</div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                            </form>
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal de Confirmación para Eliminar Materia -->
+            <div class="modal fade" id="modalEliminar1" tabindex="-1" aria-labelledby="modalEliminar1Label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalEliminar1Label">Confirmar Eliminación</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ¿Estás seguro de que quieres eliminar la materia <strong>Ilustración Gráfica Digital</strong> de tu horario?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-danger">Eliminar</button>
                         </div>
                     </div>
                 </div>
@@ -416,3 +436,26 @@
                 </div>
             </div>
         </div>
+
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Obtener todos los botones de cambiar materia
+                let botones = document.querySelectorAll(".btn-cambiar-materia");
+        
+                botones.forEach(boton => {
+                    boton.addEventListener("click", function () {
+                        let formId = this.getAttribute("data-form-id"); 
+                        let formulario = document.getElementById(formId); 
+                        
+        
+                        // Alternar visibilidad del formulario
+                        if (formulario.style.display === "none" || formulario.style.display === "") {
+                            formulario.style.display = "block";
+                        } else {
+                            formulario.style.display = "none";
+                        }
+                    });
+                });
+            });
+        </script>        
