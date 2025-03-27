@@ -7,6 +7,7 @@ exports.get_materias = (request, response, next) => {
         response.render('materias.ejs', {
         titulo: 'materias',
         materias: materias || [],
+        privilegios: request.session.privilegios || [],
         });
     });
     
