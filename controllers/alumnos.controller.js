@@ -9,3 +9,9 @@ exports.get_alumnos = (request, response, next) => {
         ruta: 'alumnos'
     });
 }; 
+
+exports.get_horario_alumnos_irregulares = (request, response, next) => {
+    response.render('horario_alumnos_irregulares.ejs', {
+        ruta: 'alumnos_irregulares'
+    });
+};

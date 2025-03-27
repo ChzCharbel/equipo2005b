@@ -7,4 +7,6 @@ router.get('/alumnosregulares', alumnosController.get_horario_alumnos_regulares)
 
 router.get('/alumnos', alumnosController.get_alumnos);
 
+router.get('/alumnosirregulares', alumnosController.get_horario_alumnos_regulares);
+
 module.exports = router;
