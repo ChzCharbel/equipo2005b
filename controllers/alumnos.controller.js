@@ -1,3 +1,5 @@
+const Alumno = require('../models/alumnos.model');
+
 exports.get_horario_alumnos_regulares = (request, response, next) => {
     response.render('horario_alumnos_regulares.ejs', {
         titulo: 'alumnos_regulares',
@@ -8,10 +10,18 @@ exports.get_horario_alumnos_regulares = (request, response, next) => {
 exports.get_alumnos = (request, response, next) => {
     console.log(request.session.matricula);
     console.log(request.session.privilegios);
-    response.render('alumnos', {
-        titulo: 'alumnos',
-        privilegios: request.session.privilegios || [],
-    });
+    Alumno.fetchAll().then((alumnos) => {
+        console.log(alumnos.rows);
+        response.render('alumnos', {
+            titulo: 'alumnos',
+            privilegios: request.session.privilegios || [],
+            alumnos: alumnos.rows,
+        });
+
+    }).catch((error) => {
+        console.log(error);
+    })
+    
 }; 
 
 exports.get_horario_alumnos_irregulares = (request, response, next) => {
