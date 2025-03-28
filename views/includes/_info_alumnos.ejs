@@ -1,10 +1,10 @@
-<div class="container">
-    <nav class="navbar bg-body-tertiary search-nav">
+<div class="container justify-content-center">
+    <nav class="navbar bg-body-tertiary search-nav justify-content-end">
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
 
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Buscar alumno" aria-label="Search" />
+                    <input class="form-control me-2" type="search" placeholder="Buscar alumno" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">
                         Buscar
                     </button>
@@ -13,10 +13,10 @@
         </nav>
     </nav>
 
-    <div class="form-container">
-        <ul class="list-group" size="10" aria-label="Size 20 select example">
+    <div class="container col-md-5 justify-content-center">
+        <ul class="list-group col-5 offset-3 gap-3 justify-content-center" size="10" aria-label="Size 20 select example">
             <% for (let alumno of alumnos) { %>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal<%= alumno.matricula %>">
+                <button type="button" class="btn btn-primary mb-6 " data-bs-toggle="modal" data-bs-target="#modal<%= alumno.matricula %>">
                     <%= alumno.nombreUsuario %>
                 </button>
                   
