@@ -55,6 +55,7 @@ exports.post_login = (request, response, next) => {
             bcrypt.compare(request.body.passwordInput, usuario.rows[0].password).then((doMatch) => {
                 if (doMatch) {
                     Usuario.getPrivilegios(usuario.rows[0].idIVD).then((privilegios) => {
+                        console.log(privilegios.rows);
                         request.session.privilegios = privilegios.rows;
                         request.session.isLoggedIn = true;
                         request.session.matricula = request.body.matriculaInput;
