@@ -20,7 +20,7 @@
             type="button"
             class="btn btn-secondary"
             data-bs-toggle="modal"
-            data-bs-target="#profModal"
+            data-bs-target="#profModal<%= profesor.matriculaProfesor %>"
             data-prof-name="<%= profesor.nombreProfesor %>"
           >
           <%= profesor.nombreProfesor %>
@@ -35,7 +35,7 @@
 
   <div
     class="modal fade"
-    id="profModal"
+    id="profModal<%= profesor.matriculaProfesor %>"
     tabindex="-1"
     aria-labelledby="modalLabel"
     aria-hidden="true"
