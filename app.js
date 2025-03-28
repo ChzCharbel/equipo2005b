@@ -70,6 +70,9 @@ app.get('/v1/students/academic_history/:ivd_id',
 const alumnosRoutes = require('./routes/alumnos.routes');
 app.use('/alumnos', alumnosRoutes);
 
+const inicioRoutes = require('./routes/inicio.routes');
+app.use('/inicio', inicioRoutes);
+
 const maestrosRoutes = require('./routes/maestros.routes');
 app.use('/maestros', maestrosRoutes);
 
