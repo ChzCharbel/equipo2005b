@@ -23,17 +23,25 @@
                               </option>
                             <% } %>
                           </select>
-                    </div>
-                    <!--Despliega profes-->
-                                        
-
+                    </div>              
                     <!-- Selección de Salón -->
                     <div class="mb-3">
-                        <label for="salon" class="form-label">Salón</label>
-                        <input type="text" class="form-control" id="salon">
-                    </div>
-                    <!--Lista de Profesor-->
-
+                        <label for="profesorSelect" class="form-label">Salón</label>
+                        <select class="form-select">
+                            <option selected>Selecciona un salón</option>
+                            <% for (let salon of salones) { %>
+                              <option value="<%= salon.idSalon%>  (<%=salon.descripcion%>)">
+                                <%= salon.idSalon%>
+                                (<%=salon.descripcion%>)
+                              </option>
+                            <% } %>
+                          </select>
+                    </div> 
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Guardar cambios</button>
+                      </div>
             </div>
         </div>
     </div>
