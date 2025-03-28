@@ -1,47 +1,50 @@
-<div class="container my-4">
-  <nav class="navbar bg-body-tertiary search-nav mb-3">
-    <p>Buscar alumno</p>
-    <div class="container-fluid">
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Alumno" aria-label="Search" />
-        <button class="btn btn-outline-success" type="submit">Buscar</button>
-      </form>
-    </div>
-  </nav>
-</div>
-  <div class="form-container">
-      <ul class="list-group gap-2" size="10" aria-label="Size 20 select example">
-          <% for (let alumno of alumnos) { %>
-              <li class="list-group-item p-0 border-0">
-                  <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modal<%= alumno.matricula %>">
-                      <%= alumno.nombreUsuario %>
-                  </button>
+<div class="container justify-content-center">
+    <nav class="navbar bg-body-tertiary search-nav justify-content-end">
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
 
-                  <div class="modal" tabindex="-1" id="modal<%= alumno.matricula %>">
-                      <div class="modal-dialog">
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <h5 class="modal-title"> <%= alumno.nombreUsuario %> </h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">
-                                  <p>
-                                      Nombre: <%= alumno.nombreUsuario %> 
-                                      <br>
-                                      Matricula: <%= alumno.matricula %>
-                                      <br>
-                                      Semestre: <%= alumno.semestre %>
-                                      <br>
-                                      Regular:  <%= alumno.regular %>
-                                      <br>
-                                      Carrera:  <%= alumno.carrera %>
-                                      <br>
-                                  </p>
-                              </div>
-                              <div class="modal-footer">
-                              </div>
-                          </div>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar alumno" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">
+                        Buscar
+                    </button>
+                </form>
+            </div>
+        </nav>
+    </nav>
+
+    <div class="container col-md-5 justify-content-center">
+        <ul class="list-group col-5 offset-3 gap-3 justify-content-center" size="10" aria-label="Size 20 select example">
+            <% for (let alumno of alumnos) { %>
+                <button type="button" class="btn btn-primary mb-6 " data-bs-toggle="modal" data-bs-target="#modal<%= alumno.matricula %>">
+                    <%= alumno.nombreUsuario %>
+                </button>
+                  
+                <div class="modal" tabindex="-1" id = "modal<%= alumno.matricula %>">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title"> <%= alumno.nombreUsuario %> </h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>
+                            Nombre: <%= alumno.nombreUsuario %> 
+                            <br>
+                            Matricula: <%= alumno.matricula %>
+                            <br>
+                            Semestre: <%= alumno.semestre %>
+                            <br>
+                            Regular:  <%= alumno.regular %>
+                            <br>
+                            Carrera:  <%= alumno.carrera %>
+                            <br>
+                          </p>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
                       </div>
+                    </div>
                   </div>
               </li>
           <% } %>
