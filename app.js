@@ -73,8 +73,8 @@ app.use('/alumnos', alumnosRoutes);
 const maestrosRoutes = require('./routes/maestros.routes');
 app.use('/maestros', maestrosRoutes);
 
-const gruposRoutes = require('./routes/grupos.routes');
-app.use('/grupos', gruposRoutes);
+const materiasRoutes = require('./routes/materias.routes');
+app.use('/materias', materiasRoutes);
 
 const planesRoutes = require('./routes/planes.routes');
 app.use('/planes', planesRoutes);
