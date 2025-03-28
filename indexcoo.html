@@ -110,9 +110,7 @@
       <!--Botones profesores -->
       <div class="container mt-4">
         <div class="row justify-content-center">
-          
-            
-
+          <% for (let profesor of profesores) { %>
             <div class="col-md-6 d-flex flex-column gap-2">
               <button
                 type="button"
@@ -123,87 +121,8 @@
               >
                 Prof. Alberto Méndez Álvarez
               </button>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-toggle="modal"
-                data-bs-target="#profModal"
-                data-prof-name="Prof. Juan Ignacio Arriola Ruíz"
-              >
-                Prof. Juan Ignacio Arriola Ruíz
-              </button>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-toggle="modal"
-                data-bs-target="#profModal"
-                data-prof-name="Prof. Esther Vázquez Herrera"
-              >
-                Prof. Esther Vázquez Herrera
-              </button>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-toggle="modal"
-                data-bs-target="#profModal"
-                data-prof-name="Prof. Beatriz Paredes Sevilla"
-              >
-                Prof. Beatriz Paredes Sevilla
-              </button>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-toggle="modal"
-                data-bs-target="#profModal"
-                data-prof-name="Prof. Inés Pineda González"
-              >
-                Prof. Inés Pineda González
-              </button>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-toggle="modal"
-                data-bs-target="#profModal"
-                data-prof-name="Martha Andrea Martínez Granados"
-              >
-                Prof. Martha Andrea Martínez Granados
-              </button>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-toggle="modal"
-                data-bs-target="#profModal"
-                data-prof-name="José Javier Enriquez Carrillo"
-              >
-                Prof. José Javier Enriquez Carrillo
-              </button>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-toggle="modal"
-                data-bs-target="#profModal"
-                data-prof-name="Martín González Luno"
-              >
-                Prof. Martín González Luno
-              </button>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-toggle="modal"
-                data-bs-target="#profModal"
-                data-prof-name="Martina Jaramillo Romero"
-              >
-                Prof. Martina Jaramillo Romero
-              </button>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-toggle="modal"
-                data-bs-target="#profModal"
-                data-prof-name="Prof. Karen Almanza Lucero"
-              >
-                Prof. Karen Almanza Lucero
-              </button>
+              
+              
             </div>
             
           </div>
@@ -932,6 +851,7 @@
           </div>
         </div>
       </div>
+
     
     <script src="app2.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
