@@ -61,7 +61,7 @@ exports.post_login = (request, response, next) => {
                         request.session.user_id = usuario.rows[0].idIVD;
                         return request.session.save((error) => {
                             if (usuario.rows[0].rol == 'admin'){
-                                response.redirect('/alumnos');
+                                response.redirect('/inicio');
                             }
                             else {
                                 response.redirect('/alumnos/regulares');
