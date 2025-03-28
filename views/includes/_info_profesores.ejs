@@ -10,10 +10,10 @@
   </div>
 
   <!--Botones profesores -->
-  <div class="container mt-4">
-    <div class="row justify-content-center">
+ 
       <% for (let profesor of profesores) { %>
-        
+        <div class="container mt-4">
+            <div class="row justify-content-center">
 
         <div class="col-md-6 d-flex flex-column gap-2">
           <button
@@ -55,7 +55,7 @@
         </div>
         <div class="modal-body">
           <dl class="row">
-            <dt class="col-sm-9">Nombre de Profesor:</dt>
+            <dt class="col-sm-9">Nombre de Profesor: <%= profesor.nombreProfesor %></dt>
             <dd class="col-sm-9" id="profName"></dd>
           </dl>
           <h6>Seleccione los horarios disponibles:</h6>
