@@ -1,15 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
+const isAuth = require('../util/is-auth');
+const canView = require('../util/canViewProfesores');
+
 const maestrosController = require('../controllers/maestros.controller');
 
 // GET /maestros
-router.get('/agregar', (request, response, next) => {
+router.get('/agregar', isAuth, canView, (request, response, next) => {
     response.render('agregar_maestros');
 });
 
 // POST /maestros
-router.post('/agregar', (request, response, next) => {
+router.post('/agregar', isAuth, canView, (request, response, next) => {
     console.log(request.body);
     maestros.push(request.body.nombre);
     
@@ -19,6 +22,6 @@ router.post('/agregar', (request, response, next) => {
     });
 });
 
-router.get('/', maestrosController.get_all_maestros);
+router.get('/', isAuth, canView, maestrosController.get_all_maestros);
 
 module.exports = router;

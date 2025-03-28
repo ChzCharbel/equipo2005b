@@ -1,10 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
+const isAuth = require('../util/is-auth');
+const canViewAll = require('../util/canViewAlumnos');
+const canViewSelf = require('../util/canViewAssignedGroups');
+
 const alumnosController = require('../controllers/alumnos.controller');
 
-router.get('/regulares', alumnosController.get_horario_alumnos_regulares);
-router.get('/irregulares', alumnosController.get_horario_alumnos_regulares);
-router.get('/', alumnosController.get_alumnos);
+router.get('/regulares', isAuth, canViewSelf, alumnosController.get_horario_alumnos_regulares);
+router.get('/irregulares', isAuth, canViewSelf, alumnosController.get_horario_alumnos_regulares);
+router.get('/', isAuth, canViewAll, alumnosController.get_alumnos);
 
 module.exports = router;

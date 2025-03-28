@@ -50,18 +50,22 @@ exports.post_login = (request, response, next) => {
     Usuario.fetchOne(request.body.matriculaInput).then((usuario) => {
         console.log(usuario.rows);
         if(usuario.rows.length > 0) {
-            console.log('qlo2');
             const bcrypt = require('bcryptjs');
             console.log(usuario.rows[0]);
             bcrypt.compare(request.body.passwordInput, usuario.rows[0].password).then((doMatch) => {
                 if (doMatch) {
                     Usuario.getPrivilegios(usuario.rows[0].idIVD).then((privilegios) => {
-                        request.session.privilegios = privilegios;
+                        request.session.privilegios = privilegios.rows;
                         request.session.isLoggedIn = true;
                         request.session.matricula = request.body.matriculaInput;
                         request.session.user_id = usuario.rows[0].idIVD;
                         return request.session.save((error) => {
-                            response.redirect('/alumnos');
+                            if (usuario.rows[0].rol == 'admin'){
+                                response.redirect('/alumnos');
+                            }
+                            else {
+                                response.redirect('/alumnos/regulares');
+                            }
                         });
                     }).catch((error) => {
                         console.log(error);
