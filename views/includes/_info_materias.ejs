@@ -1,7 +1,9 @@
 <!-- Modal de edición para Grupo -->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog">
+        
         <div class="modal-content">
+
             <div class="modal-header">
                 <h5 class="modal-title" id="editModalLabel">Editar Grupo</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
@@ -10,52 +12,28 @@
                 <form id="editForm">
                     <input type="hidden" id="grupoId"> <!-- Guarda el ID del grupo -->
 
-                    <!-- Selección de Materia -->
-                    <div class="mb-3">
-                        <label for="materiaSelect" class="form-label">Materia</label>
-                        <select class="form-control" id="materiaSelect"></select>
-                    </div>
-
                     <!-- Selección de Profesor -->
                     <div class="mb-3">
                         <label for="profesorSelect" class="form-label">Profesor</label>
-                        <select class="form-control" id="profesorSelect"></select>
+                        <select class="form-select">
+                            <option selected>Selecciona un profesor</option>
+                            <% for (let profesor of profesores) { %>
+                              <option value="<%= profesor.matriculaProfesor%>">
+                                  <%= profesor.nombreProfesor%>
+                              </option>
+                            <% } %>
+                          </select>
                     </div>
+                    <!--Despliega profes-->
+                                        
 
                     <!-- Selección de Salón -->
                     <div class="mb-3">
                         <label for="salon" class="form-label">Salón</label>
                         <input type="text" class="form-control" id="salon">
                     </div>
+                    <!--Lista de Profesor-->
 
-                    <!-- Selección de Horarios por Día -->
-                    <div class="mb-3">
-                        <label for="lunesSelect" class="form-label">Lunes</label>
-                        <select class="form-control horarioSelect" id="lunesSelect"></select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="martesSelect" class="form-label">Martes</label>
-                        <select class="form-control horarioSelect" id="martesSelect"></select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="miercolesSelect" class="form-label">Miércoles</label>
-                        <select class="form-control horarioSelect" id="miercolesSelect"></select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="juevesSelect" class="form-label">Jueves</label>
-                        <select class="form-control horarioSelect" id="juevesSelect"></select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="viernesSelect" class="form-label">Viernes</label>
-                        <select class="form-control horarioSelect" id="viernesSelect"></select>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
-                </form>
             </div>
         </div>
     </div>
