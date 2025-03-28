@@ -24,7 +24,7 @@
         </a>
       </div>
     </nav>
-    <body>
+   
       <br />
       <button
         class="btn btn-primary"
@@ -97,7 +97,7 @@
       </div>
 
       <!--Busqueda profesores -->
-      <div class="input-group mb-3 w-50">
+      <div class="input-group mb-3 w-50 mx-auto">
         <input
           type="text"
           class="form-control"
@@ -109,122 +109,38 @@
 
       <!--Botones profesores -->
       <div class="container mt-4">
-        <div class="row">
-          <div class="col-md-6 d-flex flex-column gap-2">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-toggle="modal"
-              data-bs-target="#prof1"
-            >
-              Prof. Alberto Méndez Álvarez
-            </button>
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-toggle="modal"
-              data-bs-target="#prof2"
-            >
-              Prof. Juan Ignacio Arriola Ruíz
-            </button>
-            <button
-              type="button"
-              class="btn btn-outline-secondary"
-              data-bs-toggle="modal"
-              data-bs-target="#prof3"
-            >
-              Prof. Antonia García Heche
-            </button>
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-toggle="modal"
-              data-bs-target="#prof4"
-            >
-              Prof. Esther Vázquez Herrera
-            </button>
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-toggle="modal"
-              data-bs-target="#prof5"
-            >
-              Prof. Beatriz Paredes Sevilla
-            </button>
-            <button
-              type="button"
-              class="btn btn-outline-secondary"
-              data-bs-toggle="modal"
-              data-bs-target="#prof6"
-            >
-              Prof. Inés Pineda González
-            </button>
+        <div class="row justify-content-center">
+          <% for (let profesor of profesores) { %>
+            <div class="col-md-6 d-flex flex-column gap-2">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-toggle="modal"
+                data-bs-target="#profModal"
+                data-prof-name="Prof. Alberto Méndez Álvarez"
+              >
+                Prof. Alberto Méndez Álvarez
+              </button>
+              
+              
+            </div>
+            
           </div>
-          <div class="col-md-6 d-flex flex-column gap-2">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-toggle="modal"
-              data-bs-target="#modal1"
-            >
-              Prof. Martha Andrea Martínez Granados
-            </button>
-            <button
-              type="button"
-              class="btn btn-outline-secondary"
-              data-bs-toggle="modal"
-              data-bs-target="#modal1"
-            >
-              Prof. José Javier Enriquez Carrillo
-            </button>
-            <button
-              type="button"
-              class="btn btn-outline-secondary"
-              data-bs-toggle="modal"
-              data-bs-target="#modal1"
-            >
-              Prof. María de los Angeles Juárez Vega
-            </button>
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-toggle="modal"
-              data-bs-target="#modal1"
-            >
-              Prof. Martín González Luno
-            </button>
-            <button
-              type="button"
-              class="btn btn-outline-secondary"
-              data-bs-toggle="modal"
-              data-bs-target="#modal1"
-            >
-              Prof. Martina Jaramillo Romero
-            </button>
-            <button
-              type="button"
-              class="btn btn-outline-secondary"
-              data-bs-toggle="modal"
-              data-bs-target="#modal1"
-            >
-              Prof. Karen Almanza Lucero
-            </button>
-          </div>
+          
         </div>
       </div>
 
-      <!-- Modal for Profesor 1 -->
       <div
         class="modal fade"
-        id="prof1"
+        id="profModal"
         tabindex="-1"
-        aria-labelledby="modal2Label"
+        aria-labelledby="modalLabel"
         aria-hidden="true"
       >
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="modal2Label">
+              <h1 class="modal-title fs-5" id="modalLabel">
                 Disponibilidad de horario
               </h1>
               <button
@@ -235,17 +151,13 @@
               ></button>
             </div>
             <div class="modal-body">
-              <!--aquí empieza el body del modal-->
               <dl class="row">
                 <dt class="col-sm-9">Nombre de Profesor:</dt>
-                <dd class="col-sm-9">Alberto Méndez Álvarez</dd>
+                <dd class="col-sm-9" id="profName"></dd>
               </dl>
-
               <h6>Seleccione los horarios disponibles:</h6>
-
-              <!-- Horario selector grid -->
+              <!-- Cuadrícula de horarios (igual a la original) -->
               <div class="selector-container">
-                <!-- Encabezados de días -->
                 <div class="row mb-2 text-center">
                   <div class="col-2"></div>
                   <div class="col">Lunes</div>
@@ -254,11 +166,9 @@
                   <div class="col">Jueves</div>
                   <div class="col">Viernes</div>
                 </div>
-
-                <!-- 7:00 -->
+                <!-- Ejemplo para 7:00 (repite para cada hora hasta 15:00 como en el original) -->
                 <div class="row mb-1 align-items-center">
                   <div class="col-2 text-end fw-bold">7:00</div>
-
                   <div class="col text-center">
                     <input
                       type="checkbox"
@@ -272,7 +182,6 @@
                       for="lunes-7-00"
                     ></label>
                   </div>
-
                   <div class="col text-center">
                     <input
                       type="checkbox"
@@ -286,7 +195,6 @@
                       for="martes-7-00"
                     ></label>
                   </div>
-
                   <div class="col text-center">
                     <input
                       type="checkbox"
@@ -300,7 +208,6 @@
                       for="miercoles-7-00"
                     ></label>
                   </div>
-
                   <div class="col text-center">
                     <input
                       type="checkbox"
@@ -314,7 +221,6 @@
                       for="jueves-7-00"
                     ></label>
                   </div>
-
                   <div class="col text-center">
                     <input
                       type="checkbox"
@@ -929,13 +835,14 @@
                     ></label>
                   </div>
                 </div>
+                <!-- Repite las filas para 8:00 a 15:00 como en tu código original -->
               </div>
-              <!--aquí termina el body del modal-->
             </div>
             <div class="modal-footer">
               <button
                 type="button"
                 class="btn btn-secondary"
+                id="saveAvailability"
                 data-bs-dismiss="modal"
               >
                 Aceptar
@@ -944,7 +851,8 @@
           </div>
         </div>
       </div>
-    </body>
+
+    
     <script src="app2.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
