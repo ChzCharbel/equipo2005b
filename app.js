@@ -73,15 +73,10 @@ app.use('/alumnos', alumnosRoutes);
 const maestrosRoutes = require('./routes/maestros.routes');
 app.use('/maestros', maestrosRoutes);
 
-const materiasRoutes = require('./routes/materias.routes');
-app.use('/materias', materiasRoutes);
+const gruposRoutes = require('./routes/grupos.routes');
+app.use('/grupos', gruposRoutes);
 
 const planesRoutes = require('./routes/planes.routes');
 app.use('/planes', planesRoutes);
-
-
-app.use((request, response, next) => {
-    response.status(404).render('404', {pageTitle: 'Page Not Found'});
-});
 
 app.listen(3000);
