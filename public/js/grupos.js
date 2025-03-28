@@ -1,113 +1,57 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let materiasList = [];
-    let profesoresList = [];
+    const saveChangesBtn = document.getElementById("saveChangesBtn");
 
-    // Obtener materias y profesores desde el servidor
-    fetch("/grupos/datos")
-        .then(response => response.json())
-        .then(data => {
-            materiasList = data.materias;
-            profesoresList = data.profesores;
-        })
-        .catch(error => console.error("Error cargando datos:", error));
+    if (saveChangesBtn) {
+        saveChangesBtn.addEventListener("click", async function () {
+            // Obtener valores del formulario
+            const profesor = document.getElementById("profesorSelect").value;
+            const salon = document.getElementById("salonSelect").value;
 
-    document.querySelectorAll(".edit-btn").forEach(button => {
-        button.addEventListener("click", function () {
-            document.getElementById("grupoId").value = this.getAttribute("data-id");
-            document.getElementById("salon").value = this.getAttribute("data-salon");
+            // Verificar si el campo _csrf está presente en el HTML
+            const csrfTokenInput = document.querySelector("input[name='_csrf']");
+            if (!csrfTokenInput) {
+                console.error("Error: No se encontró el token CSRF en el formulario.");
+                return;
+            }
 
-            let selectedMateria = this.getAttribute("data-materia");
-            let selectedProfesor = this.getAttribute("data-profesor");
+            const csrfToken = csrfTokenInput.value; // Obtener el valor del token
 
-            let diasSemana = ["lunes", "martes", "miercoles", "jueves", "viernes"];
-            let horariosSeleccionados = {};
-            diasSemana.forEach(dia => {
-                horariosSeleccionados[dia] = this.getAttribute(`data-${dia}`);
-            });
+            // Validar que todos los campos estén completos
+            if (!profesor || !salon) {
+                alert("Todos los campos son obligatorios");
+                return;
+            }
 
-            // Llenar select de Materias
-            let materiaSelect = document.getElementById("materiaSelect");
-            materiaSelect.innerHTML = "";
-            materiasList.forEach(materia => {
-                let option = document.createElement("option");
-                option.value = materia.id;
-                option.textContent = materia.name;
-                if (materia.name === selectedMateria) option.selected = true;
-                materiaSelect.appendChild(option);
-            });
+            try {
+                // Enviar la solicitud POST con fetch
+                const response = await fetch("/guardar-grupo", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "CSRF-Token": csrfToken // Incluir el token CSRF en los headers
+                    },
+                    body: JSON.stringify({ grupoId, profesor, salon })
+                });
 
-            // Llenar select de Profesores
-            let profesorSelect = document.getElementById("profesorSelect");
-            profesorSelect.innerHTML = "";
-            profesoresList.forEach(profesor => {
-                let option = document.createElement("option");
-                option.value = profesor.id;
-                option.textContent = profesor.name;
-                if (profesor.name === selectedProfesor) option.selected = true;
-                profesorSelect.appendChild(option);
-            });
+                const data = await response.json();
 
-            // Actualizar horarios para cada día
-            actualizarHorarios(profesorSelect.value, horariosSeleccionados);
+                if (response.ok) {
+                    // Mostrar mensaje de éxito
+                    document.getElementById("successAlert").style.display = "block";
 
-            // Evento para actualizar horarios cuando cambie el profesor
-            profesorSelect.addEventListener("change", function () {
-                actualizarHorarios(this.value);
-            });
-        });
-    });
-
-    function actualizarHorarios(profesorId, horariosSeleccionados = {}) {
-        let diasSemana = ["lunes", "martes", "miercoles", "jueves", "viernes"];
-
-        diasSemana.forEach(dia => {
-            let horarioSelect = document.getElementById(`${dia}Select`);
-            horarioSelect.innerHTML = "";
-
-            fetch(`/profesores/${profesorId}/horarios`)
-                .then(response => response.json())
-                .then(horarios => {
-                    horarios.forEach(horario => {
-                        let option = document.createElement("option");
-                        option.value = horario;
-                        option.textContent = horario;
-                        if (horario === horariosSeleccionados[dia]) option.selected = true;
-                        horarioSelect.appendChild(option);
-                    });
-                })
-                .catch(error => console.error("Error obteniendo horarios:", error));
+                    // Cerrar el modal después de un breve retraso
+                    setTimeout(() => {
+                        document.getElementById("successAlert").style.display = "none";
+                        const modal = bootstrap.Modal.getInstance(document.getElementById("editModal"));
+                        modal.hide();
+                    }, 2000);
+                } else {
+                    alert("Error: " + data.message);
+                }
+            } catch (error) {
+                console.error("Error en la solicitud:", error);
+                alert("Hubo un problema al guardar los cambios.");
+            }
         });
     }
-
-    document.getElementById("editForm").addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        let id = document.getElementById("grupoId").value;
-        let updatedData = {
-            idMateria: document.getElementById("materiaSelect").value,
-            matriculaProfesor: document.getElementById("profesorSelect").value,
-            idSalon: document.getElementById("salon").value,
-            Lunes: document.getElementById("lunesSelect").value,
-            Martes: document.getElementById("martesSelect").value,
-            Miercoles: document.getElementById("miercolesSelect").value,
-            Jueves: document.getElementById("juevesSelect").value,
-            Viernes: document.getElementById("viernesSelect").value
-        };
-
-        fetch(`/grupos/editar/${id}`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(updatedData)
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert("Grupo actualizado con éxito");
-                    location.reload();
-                } else {
-                    alert("Error al actualizar el grupo");
-                }
-            })
-            .catch(error => console.error("Error:", error));
-    });
 });

@@ -1,47 +1,52 @@
 <!-- Modal de edición para Grupo -->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        
         <div class="modal-content">
-
             <div class="modal-header">
                 <h5 class="modal-title" id="editModalLabel">Editar Grupo</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
                 <form id="editForm">
-                    <input type="hidden" id="grupoId"> <!-- Guarda el ID del grupo -->
-
+                    <!-- Añadir el token CSRF como campo oculto -->
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    
                     <!-- Selección de Profesor -->
                     <div class="mb-3">
                         <label for="profesorSelect" class="form-label">Profesor</label>
-                        <select class="form-select">
-                            <option selected>Selecciona un profesor</option>
+                        <select id="profesorSelect" class="form-select" name="profesor" required>
+                            <option value="">Selecciona un profesor</option>
                             <% for (let profesor of profesores) { %>
-                              <option value="<%= profesor.matriculaProfesor%>">
-                                  <%= profesor.nombreProfesor%>
-                              </option>
+                            <option value="<%= profesor.matriculaProfesor%>">
+                                <%= profesor.nombreProfesor%>
+                            </option>
                             <% } %>
-                          </select>
+                        </select>
                     </div>              
+                
                     <!-- Selección de Salón -->
                     <div class="mb-3">
-                        <label for="profesorSelect" class="form-label">Salón</label>
-                        <select class="form-select">
-                            <option selected>Selecciona un salón</option>
+                        <label for="salonSelect" class="form-label">Salón</label>
+                        <select id="salonSelect" class="form-select" name="salon" required>
+                            <option value="">Selecciona un salón</option>
                             <% for (let salon of salones) { %>
-                              <option value="<%= salon.idSalon%>  (<%=salon.descripcion%>)">
-                                <%= salon.idSalon%>
-                                (<%=salon.descripcion%>)
-                              </option>
+                            <option value="<%= salon.idSalon%>">
+                                <%= salon.idSalon%> (<%=salon.descripcion%>)
+                            </option>
                             <% } %>
-                          </select>
-                    </div> 
-                    
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Guardar cambios</button>
-                      </div>
+                        </select>
+                    </div>
+                </form>
+
+                <!-- Success Message Alert (Hidden by default) -->
+                <div id="successAlert" class="alert alert-success mt-3" style="display: none;">
+                    Grupo guardado exitosamente
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" id="saveChangesBtn" class="btn btn-primary">Guardar cambios</button>
             </div>
         </div>
     </div>
@@ -82,6 +87,7 @@
 <script src="/js/grupos.js"></script>
 <script src="/js/scriptIVD.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 
 </html>
