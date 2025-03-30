@@ -111,6 +111,21 @@ async function getAllCourses(){
     return parsedJson.data;
 };
 
+async function getAllUsers(userType){
+    const token = await getToken();
+    const headers = getHeaders(token);
+    const response = await axiosAdminClient.get("/v1/users/all", {
+        headers, params: {
+            type: userType || '',
+        } 
+    });
+    const jsonString = JSON.stringify(response.data);
+    const parsedJson = JSON.parse(jsonString);
+    console.log(parsedJson.data);
+    return parsedJson.data;
+}
+getAllUsers('Users::Administrator');
+
 const grupo13 = (async () => {
     const cuarto = await getUserGroups(13, 100007);
     console.log(cuarto.room);
@@ -136,4 +151,4 @@ const materias = (async () => {
 
 //getUserById(100023);
 //console.log(grupo13.room);
-module.exports = { getUserById, getUserGroups, getAcademicHistory, getAllCourses, getToken, getHeaders, axiosAdminClient };
+module.exports = { getUserById, getUserGroups, getAcademicHistory, getAllCourses, getAllUsers, getToken, getHeaders, axiosAdminClient };
