@@ -121,7 +121,6 @@ async function getAllUsers(userType){
     });
     const jsonString = JSON.stringify(response.data);
     const parsedJson = JSON.parse(jsonString);
-    console.log(parsedJson.data);
     return parsedJson.data;
 }
 

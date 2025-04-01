@@ -14,22 +14,32 @@ exports.get_reset_password = (request, response, next) => {
 exports.post_reset_password= (request, response, next) => {
     console.log(request.body.matriculaInput);
     let rolIVD = '';
-    let userIVD = '';
+    let userType = '';
+    
     getUserById(request.body.matriculaInput).then((usuarioAPI) => {
         console.log(usuarioAPI.data);
         rolIVD = usuarioAPI.data.role.name;
-        const nombre = usuarioAPI.data.name + ' ' + usuarioAPI.data.first_surname + ' ' + usuarioAPI.data.second_surname;
-        userIVD = nombre;
-        const usuario = new 
-        Usuario(request.body.matriculaInput, request.body.emailInput, request.body.passwordInput, rolIVD, userIVD);
-        usuario.save().then(() => {
-            request.session.info = `Tu usuario se ha creado`;
-            response.redirect('/users/login');
+        if (rolIVD == 'admin') {
+            userType = 'Users::Administrator';
+        }
+        else if (rolIVD == 'student') {
+            userType = 'Users::Student';
+        }
+        Usuario.getAtributos(userType, request.body.matriculaInput).then((arreglo) => {
+            console.log(arreglo);
+            const usuario = new 
+            Usuario(request.body.matriculaInput, arreglo[1], request.body.passwordInput, arreglo[2], arreglo[0], arreglo[3]);
+            usuario.save().then(() => {
+                request.session.info = `Tu usuario se ha creado`;
+                response.redirect('/users/login');
+            }).catch((error) => {
+                console.log(error);
+            });
         }).catch((error) => {
             console.log(error);
         });
     }).catch((error) => {
-        response.send('Oops! Parece que los datos son incorrectos');
+        response.send('¡Oops! Parece que los datos son incorrectos');
         console.log(error);
     });
 };
