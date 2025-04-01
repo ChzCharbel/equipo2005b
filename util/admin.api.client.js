@@ -121,10 +121,8 @@ async function getAllUsers(userType){
     });
     const jsonString = JSON.stringify(response.data);
     const parsedJson = JSON.parse(jsonString);
-    console.log(parsedJson.data);
     return parsedJson.data;
 }
-getAllUsers('Users::Administrator');
 
 const grupo13 = (async () => {
     const cuarto = await getUserGroups(13, 100007);
