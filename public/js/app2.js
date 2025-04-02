@@ -1,13 +1,29 @@
 // Objeto para almacenar la disponibilidad de cada profesor
 let availability = {};
 
+// Parsear allProfesores
+const profesores = JSON.parse(allProfesores);
+
 // Referencia al modal
-const profModal = document.getElementById("profModal");
+for (let profesor of profesores) {
+  let profModalPrueba = document.getElementById("profModal" + profesor.matriculaProfesor);
+  profModalPrueba.addEventListener("show.bs.modal", function (event) {});
+}
+const profModal = document.getElementById("profModalIVD012902");
+
+function guardarHorario2() {
+  console.log('Guardar horario profesor');
+  document.getElementById("demo").innerHTML = "Hello World";
+}
 
 // Cuando el modal se va a mostrar
 profModal.addEventListener("show.bs.modal", function (event) {
+  console.log('PROFESss: ' + profesores[0].matriculaProfesor + ' ' + profesores[0].nombreProfesor);
   const button = event.relatedTarget; // Botón que abrió el modal
   const profName = button.getAttribute("data-prof-name"); // Nombre del profesor
+  const profMatricula = button.getAttribute("data-prof-id"); // Matricula del profesor
+  console.log('matricula:' +  profMatricula);
+  console.log('nombre:' +  profName);
   document.getElementById("profName").textContent = profName; // Mostrar nombre en el modal
 
   // Días y horarios disponibles
@@ -42,9 +58,7 @@ profModal.addEventListener("show.bs.modal", function (event) {
 });
 
 // Cuando se presiona "Aceptar"
-document
-  .getElementById("saveAvailability")
-  .addEventListener("click", function () {
+function guardarHorario1() {
     const profName = document.getElementById("profName").textContent; // Nombre del profesor
     const profAvailability = {}; // Objeto para almacenar la nueva disponibilidad
 
@@ -84,4 +98,6 @@ document
       `Disponibilidad actualizada para ${profName}:`,
       availability[profName]
     );
-  });
+    console.log(availability[profName][0]);
+    
+  };
