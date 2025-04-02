@@ -7,7 +7,7 @@ exports.get_materias = (request, response, next) => {
     Promise.all([
         Materia.getAllCourses(),
         Profesor.fetchAll(),
-        Salon.fetchAll()
+        Salon.fetchAll(),
     ]).then(([materias, profesores, salones]) => {
         response.render('materias.ejs', {
             titulo: 'materias',
@@ -16,6 +16,7 @@ exports.get_materias = (request, response, next) => {
             profesores: profesores.rows || [],
             salones: salones.rows || [],
             carrera: request.session.carrera || '',
+            ciclosEscolares: request.session.ciclosEscolares || [],
         });
     }).catch((error) => {
         console.log(error);

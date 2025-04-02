@@ -17,6 +17,7 @@ exports.get_alumnos = (request, response, next) => {
             privilegios: request.session.privilegios || [],
             alumnos: alumnos.rows,
             carrera: request.session.carrera || '',
+            ciclosEscolares: request.session.ciclosEscolares || [],
         });
 
     }).catch((error) => {

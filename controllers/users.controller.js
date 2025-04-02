@@ -1,4 +1,5 @@
 const Usuario = require('../models/users.model');
+const CicloEscolar = require('../models/ciclos.model');
 const {getUserById, getUserGroups, getAcademicHistory} = require('../util/admin.api.client');
 
 exports.get_reset_password = (request, response, next) => {
@@ -73,9 +74,16 @@ exports.post_login = (request, response, next) => {
                         request.session.user_id = usuario.rows[0].idIVD;
                         request.session.carrera = usuario.rows[0].carrera;
                         console.log('Carrera del usuario: ' + request.session.carrera);
+                        
                         return request.session.save((error) => {
                             if (usuario.rows[0].rol == 'admin'){
-                                response.redirect('/inicio');
+                                CicloEscolar.fetchAll().then((ciclos) => {
+                                    console.log(ciclos.rows);
+                                    request.session.ciclosEscolares = ciclos.rows;
+                                    response.redirect('/inicio');
+                                }).catch((error) => {
+                                    console.log(error);
+                                })
                             }
                             else {
                                 response.redirect('/alumnos/regulares');
