@@ -14,7 +14,8 @@ exports.get_materias = (request, response, next) => {
             materias: materias || [],
             privilegios: request.session.privilegios || [],
             profesores: profesores.rows || [],
-            salones: salones.rows || []
+            salones: salones.rows || [],
+            carrera: request.session.carrera || '',
         });
     }).catch((error) => {
         console.log(error);

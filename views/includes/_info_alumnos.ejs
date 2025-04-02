@@ -16,6 +16,7 @@
     <div class="container col-md-5 justify-content-center">
         <ul class="list-group col-5 offset-3 gap-3 justify-content-center" size="10" aria-label="Size 20 select example">
             <% for (let alumno of alumnos) { %>
+                <% if (alumno.carrera == carrera) { %>
                 <button type="button" class="btn btn-primary mb-6 " data-bs-toggle="modal" data-bs-target="#modal<%= alumno.matricula %>">
                     <%= alumno.nombreUsuario %>
                 </button>
@@ -47,7 +48,8 @@
                     </div>
                   </div>
               </li>
-          <% } %>
+              
+          <% } } %>
       </ul>
   </div>
 </div>
