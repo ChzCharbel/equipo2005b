@@ -1,7 +1,7 @@
 <div class="container mt-0">
     
 
-    <div class="row mb-5 p-3">
+    <div class="row mb-3 p-3">
         <div class="col">
             <ul class="nav nav-underline">
                 <li class="nav-item">
@@ -31,8 +31,15 @@
 
     <div class="container">
         <div class="row">
+            <% const nombreSemestres = ['Primer', 'Segundo', 
+            'Tercer', 'Cuarto', 'Quinto', 'Sexto', 'Séptimo', 
+            'Octavo', 'Noveno'] %>
+            <% for (let i = 0; i < 9; i++) { %>
+                <div class="fs-2 mb-3">
+                    <%= nombreSemestres[i] %> Semestre
+                </div> 
             <% for (let materia of materias) { %>
-                <% if (materia.plans[0].degree.name == carrera && materia.plans[0].status == 'active') { %>
+                <% if (materia.plans[0].degree.name == carrera && materia.plans[0].status == 'active' && materia.plans_courses[0].semester == (i+1)) { %>
                     <div class="col-sm-6 col-md-3 mb-4"> 
                         <div class="card" style="width: 100%;">
                             <img src="/images/95404c.png" class="card-img-top" alt="color" height="150" />
@@ -48,7 +55,8 @@
                             </div>
                         </div>
                     </div>
-            <% } } %>
+            <% } } }%>
+            
         </div>
     </div>
 
