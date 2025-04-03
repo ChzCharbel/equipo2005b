@@ -1,0 +1,171 @@
+    <!--Busqueda profesores -->
+<html>
+    <head>
+        <link rel="stylesheet" href="public/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="public/css/styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+        <title>Sistema de Inscripciones</title>
+    </head>
+<body>
+
+    <div class="input-group mb-3 w-50 mx-auto">
+        <input
+        type="text"
+        class="form-control"
+        placeholder="Buscar..."
+        aria-label="Buscar"
+        />
+    <button class="btn btn-outline-secondary" type="button">Buscar</button>
+    </div>
+
+    <!--Botones profesores -->
+ 
+        <div class="container mt-4">
+            <div class="row justify-content-center">
+
+        <div class="col-md-6 d-flex flex-column gap-2">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-toggle="modal"
+            data-bs-target="#profModal"
+          >
+          Profesor Z
+          </button>
+
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+
+  <div
+    class="modal fade"
+    id="profModal"
+    tabindex="-1"
+    aria-labelledby="modalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modalProfesor">
+        <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalLabel">
+            Disponibilidad de horario
+        </h1>
+        <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+        ></button>
+        </div>
+        <div class="modal-body">
+        <dl class="row">
+            <dt class="col-sm-9">Nombre de Profesor: Profesor x</dt>
+            <dd class="col-sm-9" id="profName"></dd>
+        </dl>
+        <h6>Seleccione los horarios disponibles:</h6>
+        <!-- Cuadrícula de horarios (igual a la original) -->
+        <div class="container">
+            <div class="row mb-2 ms-4">
+                <div class="col-6">
+                    <div class="row text-center">
+                        <div class="col-2">Lunes</div>
+                        <div class="col-2">Martes</div>
+                        <div class="col-2">Miércoles</div>
+                        <div class="col-2">Jueves</div>
+                        <div class="col-2">Viernes</div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            <!-- Ejemplo para 7:00 (repite para cada hora hasta 15:00) -->
+        
+        <div class="row mb-1 align-items-center">
+                <div class=" row fw-bold">
+                    <div class="col-2">
+                        7:00
+                    </div> 
+                    <div class="btn-group w-50 " role="group" aria-label="Basic example">
+                        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+                        <label class="btn btn-outline-primary mb-1" for="btncheck1"> <span class="invisible fs-6">tuesday</span> </label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+                        <label class="btn btn-outline-primary mb-1" for="btncheck2"> <span class="invisible fs-6">tuesday</span> </label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+                        <label class="btn btn-outline-primary mb-1" for="btncheck3"> <span class="invisible fs-6">tuesday</span> </label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
+                        <label class="btn btn-outline-primary mb-1" for="btncheck4"> <span class="invisible fs-6">tuesday</span> </label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
+                        <label class="btn btn-outline-primary mb-1" for="btncheck5"> <span class="invisible fs-6">tuesday</span> </label>
+                    </div>
+
+                </div>
+                <div class=" row fw-bold">
+                    <div class="col-2">
+                        7:30
+                    </div> 
+                    <div class="btn-group w-50 mb-1" role="group" aria-label="Basic example">
+                        <input type="checkbox" class="btn-check" id="btncheck11" autocomplete="off">
+                        <label class="btn btn-outline-primary mb-1" for="btncheck11"> <span class="invisible fs-6">tuesday</span> </label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck22" autocomplete="off">
+                        <label class="btn btn-outline-primary mb-1" for="btncheck22"> <span class="invisible fs-6">tuesday</span> </label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck33" autocomplete="off">
+                        <label class="btn btn-outline-primary mb-1" for="btncheck33"> <span class="invisible fs-6">tuesday</span> </label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck44" autocomplete="off">
+                        <label class="btn btn-outline-primary mb-1" for="btncheck44"> <span class="invisible fs-6">tuesday</span> </label>
+
+                        <input type="checkbox" class="btn-check mb-1" id="btncheck55" autocomplete="off">
+                        <label class="btn btn-outline-primary mb-1" for="btncheck55"> <span class="invisible fs-6">tuesday</span> </label>
+                    </div>
+
+                </div>
+
+                <div class=" row fw-bold">
+                    <div class="col-1">
+                        8:00
+                    </div> 
+                    
+                        <div class="btn-group w-50 " role="group" aria-label="Basic example">
+                        <input type="checkbox" class="btn-check" id="btncheck111" autocomplete="off">
+                        <label class="btn btn-outline-primary mb-1" for="btncheck111"> <span class="invisible fs-6">tuesday</span> </label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck222" autocomplete="off">
+                        <label class="btn btn-outline-primary mb-1" for="btncheck222"> <span class="invisible fs-6">tuesday</span> </label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck333" autocomplete="off">
+                        <label class="btn btn-outline-primary mb-1" for="btncheck333"> <span class="invisible fs-6">tuesday</span> </label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck444" autocomplete="off">
+                        <label class="btn btn-outline-primary mb-1" for="btncheck444"> <span class="invisible fs-6">tuesday</span> </label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
+                        <label class="btn btn-outline-primary mb-1" for="btncheck555"> <span class="invisible fs-6">tuesday</span> </label>
+                    
+                    </div>
+                    
+
+                </div>
+                
+                
+
+                    
+
+
+            </div>
+        </div>
+        </div>
+        <script src="app2.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

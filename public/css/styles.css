@@ -92,3 +92,12 @@
 #loginCard {
     width: 22rem;
 }
+
+.notificaciones {
+    max-width: 280px;
+    max-height: 200px;
+}
+
+.modalProfesor {
+    max-width: 80rem;
+}

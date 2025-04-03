@@ -152,4 +152,8 @@ module.exports = class Usuario {
         [id]
         );
     }
+
+    static getCarrera(id) {
+        return db.query(`SELECT carrera FROM "Usuario" WHERE "idIVD" = $1::text;`, [id]);
+    }
 };
