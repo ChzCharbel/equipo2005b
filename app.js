@@ -82,4 +82,7 @@ app.use('/materias', materiasRoutes);
 const planesRoutes = require('./routes/planes.routes');
 app.use('/planes', planesRoutes);
 
+const ofertaRoutes = require('./routes/oferta.routes');
+app.use('/oferta_academica', ofertaRoutes);
+
 app.listen(3000);
