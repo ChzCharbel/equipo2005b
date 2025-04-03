@@ -7,6 +7,7 @@ exports.get_horario_alumnos_regulares = (request, response, next) => {
     });
 };
 
+
 exports.get_alumnos = (request, response, next) => {
     console.log(request.session.matricula);
     console.log(request.session.privilegios);
@@ -26,6 +27,15 @@ exports.get_alumnos = (request, response, next) => {
     })
     
 }; 
+
+exports.get_buscar = (request, response, next) => {
+    Alumno.find(request.params.nombre)
+        .then((alumno) => {
+            response.status(200).json({alumno:alumno.rows});
+        }).catch((error) => {
+            response.status(500).json({message: "Alumno no encontrado"});
+        });
+}
 
 exports.get_horario_alumnos_irregulares = (request, response, next) => {
     response.render('horario_alumnos_irregulares.ejs', {

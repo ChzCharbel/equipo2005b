@@ -9,6 +9,9 @@ const alumnosController = require('../controllers/alumnos.controller');
 
 router.get('/regulares', isAuth, canViewSelf, alumnosController.get_horario_alumnos_regulares);
 router.get('/irregulares', isAuth, canViewSelf, alumnosController.get_horario_alumnos_regulares);
+router.get('/buscar/:nombre', isAuth, canViewAll, alumnosController.get_buscar);
 router.get('/', isAuth, canViewAll, alumnosController.get_alumnos);
+
+
 
 module.exports = router;
