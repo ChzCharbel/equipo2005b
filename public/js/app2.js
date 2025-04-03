@@ -7,7 +7,18 @@ const profesores = JSON.parse(allProfesores);
 // Referencia al modal
 for (let profesor of profesores) {
   let profModalPrueba = document.getElementById("profModal" + profesor.matriculaProfesor);
-  profModalPrueba.addEventListener("show.bs.modal", function (event) {});
+  profModalPrueba.addEventListener("show.bs.modal", function (event) {
+  console.log('PROFESss: ' + profesores[0].matriculaProfesor + ' ' + profesores[0].nombreProfesor);
+  const button = event.relatedTarget; // Botón que abrió el modal
+  let profName = button.getAttribute("data-prof-name"); // Nombre del profesor
+  let profMatricula = button.getAttribute("data-prof-id"); // Matricula del profesor
+  console.log('matricula:' +  profMatricula);
+  console.log('nombre:' +  profName);
+  document.getElementById("profName").textContent = profName;
+  console.log(
+      `Disponibilidad actualizada para ${profName}`
+    );
+  });
 }
 const profModal = document.getElementById("profModalIVD012902");
 
@@ -17,7 +28,7 @@ function guardarHorario2() {
 }
 
 // Cuando el modal se va a mostrar
-profModal.addEventListener("show.bs.modal", function (event) {
+/* profModal.addEventListener("show.bs.modal", function (event) {
   console.log('PROFESss: ' + profesores[0].matriculaProfesor + ' ' + profesores[0].nombreProfesor);
   const button = event.relatedTarget; // Botón que abrió el modal
   const profName = button.getAttribute("data-prof-name"); // Nombre del profesor
@@ -55,10 +66,10 @@ profModal.addEventListener("show.bs.modal", function (event) {
       }
     });
   });
-});
+}); */
 
 // Cuando se presiona "Aceptar"
-function guardarHorario1() {
+/* function guardarHorario1() {
     const profName = document.getElementById("profName").textContent; // Nombre del profesor
     const profAvailability = {}; // Objeto para almacenar la nueva disponibilidad
 
@@ -100,4 +111,4 @@ function guardarHorario1() {
     );
     console.log(availability[profName][0]);
     
-  };
+  }; */
