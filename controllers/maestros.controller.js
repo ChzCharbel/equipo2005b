@@ -9,9 +9,11 @@ exports.get_all_maestros = (request, response, next) => {
         titulo: "Maestros",
         privilegios: request.session.privilegios || [],
         profesores: request.session.profesores || [],
+        ciclosEscolares: request.session.ciclosEscolares || [],
       });
     })
     .catch((error) => {
       console.log(error);
+      response.render('error.ejs');
     });
 };

@@ -22,6 +22,7 @@ exports.get_alumnos = (request, response, next) => {
 
     }).catch((error) => {
         console.log(error);
+        response.render('error.ejs');
     })
     
 }; 
