@@ -17,6 +17,7 @@ exports.get_materias = (request, response, next) => {
             salones: salones.rows || [],
             carrera: request.session.carrera || '',
             ciclosEscolares: request.session.ciclosEscolares || [],
+            cicloActual: request.params.idCiclo || '',
         });
     }).catch((error) => {
         console.log(error);

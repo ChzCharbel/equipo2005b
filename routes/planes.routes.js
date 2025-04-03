@@ -6,6 +6,6 @@ const canView = require('../util/canViewPlanes');
 
 const planesController = require('../controllers/planes.controller');
 
-router.get('/', isAuth, canView, planesController.get_planes);
+router.get('/:idCiclo/', isAuth, canView, planesController.get_planes);
 
 module.exports = router;

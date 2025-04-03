@@ -80,13 +80,13 @@ exports.post_login = (request, response, next) => {
                                 CicloEscolar.fetchAll().then((ciclos) => {
                                     console.log(ciclos.rows);
                                     request.session.ciclosEscolares = ciclos.rows;
-                                    response.redirect('/' + ciclos.rows[0].idCicloEscolar + '/inicio');
+                                    response.redirect('/inicio/' + ciclos.rows[0].idCicloEscolar);
                                 }).catch((error) => {
                                     console.log(error);
                                 })
                             }
                             else {
-                                response.redirect('/' + ciclos.rows[0].idCicloEscolar + '/alumnos/regulares');
+                                response.redirect('/alumnos/regulares/' + ciclos.rows[0].idCicloEscolar);
                             }
                         });
                     }).catch((error) => {

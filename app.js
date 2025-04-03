@@ -72,21 +72,21 @@ app.get('/v1/students/academic_history/:ivd_id',
 )
 
 const alumnosRoutes = require('./routes/alumnos.routes');
-app.use('/:idCiclo/alumnos', alumnosRoutes);
+app.use('/alumnos', alumnosRoutes);
 
 const inicioRoutes = require('./routes/inicio.routes');
-app.use('/:idCiclo/inicio', inicioRoutes);
+app.use('/inicio', inicioRoutes);
 
 const maestrosRoutes = require('./routes/maestros.routes');
-app.use('/:idCiclo/maestros', maestrosRoutes);
+app.use('/maestros', maestrosRoutes);
 
 const materiasRoutes = require('./routes/materias.routes');
-app.use('/:idCiclo/materias', materiasRoutes);
+app.use('/materias', materiasRoutes);
 
 const planesRoutes = require('./routes/planes.routes');
-app.use('/:idCiclo/planes', planesRoutes);
+app.use('/planes', planesRoutes);
 
 const ofertaRoutes = require('./routes/oferta.routes');
-app.use('/:idCiclo/oferta_academica', ofertaRoutes);
+app.use('/oferta_academica', ofertaRoutes);
 
 app.listen(3000);

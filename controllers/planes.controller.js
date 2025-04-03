@@ -3,5 +3,6 @@ exports.get_planes = (request, response, next) => {
         titulo: 'planes',
         privilegios: request.session.privilegios || [],
         ciclosEscolares: request.session.ciclosEscolares || [],
+        cicloActual: request.params.idCiclo || '',
     });
 };

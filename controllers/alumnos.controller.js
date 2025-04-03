@@ -19,6 +19,7 @@ exports.get_alumnos = (request, response, next) => {
             alumnos: alumnos.rows,
             carrera: request.session.carrera || '',
             ciclosEscolares: request.session.ciclosEscolares || [],
+            cicloActual: request.params.idCiclo || '',
         });
 
     }).catch((error) => {

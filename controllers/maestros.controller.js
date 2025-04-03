@@ -10,6 +10,7 @@ exports.get_all_maestros = (request, response, next) => {
         privilegios: request.session.privilegios || [],
         profesores: request.session.profesores || [],
         ciclosEscolares: request.session.ciclosEscolares || [],
+        cicloActual: request.params.idCiclo || '',
       });
     })
     .catch((error) => {

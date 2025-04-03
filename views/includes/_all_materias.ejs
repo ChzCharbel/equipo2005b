@@ -1,42 +1,56 @@
-<div class="container">
-    <nav class="navbar bg-body-tertiary search-nav">
-        <nav class="navbar bg-body-tertiary">
-            <p>Buscar materia</p>
-            <div class="container-fluid">
+<div class="container mt-0">
+    
 
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Materia" aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">
-                        Buscar
-                    </button>
-                </form>
-            </div>
-        </nav>
-    </nav>
-    <br></br>
+    <div class="row mb-5 p-3">
+        <div class="col">
+            <ul class="nav nav-underline">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Materias seleccionadas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-dark" href="/oferta_academica/<%= cicloActual %>/agregar">Agregar materias</a>
+                </li>
+        </div>
+        
+        <div class="col-auto justify-content-end">
+            <nav class="search-nav">
+                <div class="container-fluid">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Materia" aria-label="Search" />
+                        <button class="btn btn-outline-success" type="submit">
+                            Buscar
+                        </button>
+                    </form>
+                </div>
+            </nav> 
+        </div>
+        
+        </ul>
+        <br></br>
+    </div>
 
-<div class="container">
-    <div class="row">
-        <% for (let materia of materias) { %>
-            <% if (materia.plans[0].degree.name == carrera && materia.plans[0].status == 'active') { %>
-                <div class="col-sm-6 col-md-3 mb-4"> 
-                    <div class="card" style="width: 100%;">
-                        <img src="/images/95404c.png" class="card-img-top" alt="color" height="150" />
-                        
-                        <div class="card-body">
-                            <h5 class="card-title"><%= materia.name %></h5>
-                            <div class="text-end">
-                                <a class="text-center link-success" href="/inicio">
-                                <i class="bi bi-plus-circle-fill"></i>  
-                                </a>
-                        </div>
+    <div class="container">
+        <div class="row">
+            <% for (let materia of materias) { %>
+                <% if (materia.plans[0].degree.name == carrera && materia.plans[0].status == 'active') { %>
+                    <div class="col-sm-6 col-md-3 mb-4"> 
+                        <div class="card" style="width: 100%;">
+                            <img src="/images/95404c.png" class="card-img-top" alt="color" height="150" />
                             
+                            <div class="card-body">
+                                <h5 class="card-title"><%= materia.name %></h5>
+                                <div class="text-end">
+                                    <a class="text-center link-success" href="/inicio">
+                                    <i class="bi bi-plus-circle-fill"></i>  
+                                    </a>
+                            </div>
+                                
+                            </div>
                         </div>
                     </div>
-                </div>
-        <% } } %>
+            <% } } %>
+        </div>
     </div>
-</div>
 
 <script src="/js/grupos.js"></script>
 <script src="/js/scriptIVD.js"></script>
