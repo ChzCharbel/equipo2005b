@@ -6,7 +6,7 @@ exports.get_all_maestros = (request, response, next) => {
       console.log(profesores.rows);
       request.session.profesores = profesores.rows;
       response.render("profesores.ejs", {
-        titulo: "maestros",
+        titulo: "Maestros",
         privilegios: request.session.privilegios || [],
         profesores: request.session.profesores || [],
       });
