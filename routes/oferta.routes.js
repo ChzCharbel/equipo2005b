@@ -6,6 +6,6 @@ const canView = require('../util/canViewOfertaAcademica');
 
 const ofertaController = require('../controllers/oferta.controller')
 
-router.get('/', isAuth, canView, ofertaController.get_oferta);
+router.get('/', isAuth, canView, ofertaController.get_agregar);
 
 module.exports = router;

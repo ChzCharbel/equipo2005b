@@ -18,16 +18,23 @@
 <div class="container">
     <div class="row">
         <% for (let materia of materias) { %>
-            <div class="col-sm-6 col-md-3 mb-4"> 
-                <div class="card" style="width: 100%;">
-                    <img src="/images/95404c.png" class="card-img-top" alt="color" height="150" />
-                    
-                    <div class="card-body">
-                        <h5 class="card-title"><%= materia.name %></h5>
+            <% if (materia.plans[0].degree.name == carrera && materia.plans[0].status == 'active') { %>
+                <div class="col-sm-6 col-md-3 mb-4"> 
+                    <div class="card" style="width: 100%;">
+                        <img src="/images/95404c.png" class="card-img-top" alt="color" height="150" />
+                        
+                        <div class="card-body">
+                            <h5 class="card-title"><%= materia.name %></h5>
+                            <div class="text-end">
+                                <a class="text-center link-success" href="/inicio">
+                                <i class="bi bi-plus-circle-fill"></i>  
+                                </a>
+                        </div>
+                            
+                        </div>
                     </div>
                 </div>
-            </div>
-        <% } %>
+        <% } } %>
     </div>
 </div>
 

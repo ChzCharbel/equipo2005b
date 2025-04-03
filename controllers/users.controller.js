@@ -80,13 +80,13 @@ exports.post_login = (request, response, next) => {
                                 CicloEscolar.fetchAll().then((ciclos) => {
                                     console.log(ciclos.rows);
                                     request.session.ciclosEscolares = ciclos.rows;
-                                    response.redirect('/inicio');
+                                    response.redirect('/' + ciclos.rows[0].idCicloEscolar + '/inicio');
                                 }).catch((error) => {
                                     console.log(error);
                                 })
                             }
                             else {
-                                response.redirect('/alumnos/regulares');
+                                response.redirect('/' + ciclos.rows[0].idCicloEscolar + '/alumnos/regulares');
                             }
                         });
                     }).catch((error) => {
@@ -106,7 +106,7 @@ exports.post_login = (request, response, next) => {
         }
     }).catch((error) => {
         console.log(error);
-        console.log('nooo');
+        console.log('Error fetching user');
     });
 };
 
