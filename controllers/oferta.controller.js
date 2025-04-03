@@ -9,7 +9,7 @@ exports.get_agregar = (request, response, next) => {
     Materia.getAllCourses().then((materias) => {
         console.log(materias);
         response.render('oferta_academica.ejs', {
-            titulo: 'Materias',
+            titulo: 'oferta_academica',
             privilegios: request.session.privilegios || [],
             materias: materias,
             carrera: request.session.carrera || '',
@@ -18,4 +18,8 @@ exports.get_agregar = (request, response, next) => {
     }).catch((error) => {
         console.log(error);
     });
+}
+
+exports.post_agregar = (request, response, next) => {
+
 }

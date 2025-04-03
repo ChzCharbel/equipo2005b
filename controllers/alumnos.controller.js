@@ -14,7 +14,7 @@ exports.get_alumnos = (request, response, next) => {
     Alumno.fetchAll().then((alumnos) => {
         console.log(alumnos.rows);
         response.render('alumnos', {
-            titulo: 'Alumnos',
+            titulo: 'alumnos',
             privilegios: request.session.privilegios || [],
             alumnos: alumnos.rows,
             carrera: request.session.carrera || '',

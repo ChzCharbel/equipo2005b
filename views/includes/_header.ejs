@@ -30,14 +30,26 @@
             />
           </a>
         </span>
-        <%- include('./_dropdown_ciclos') %> <% if (titulo) { %>
+        <%- include('./_dropdown_ciclos') %> 
         <span
           class="navbar-brand mb-0 fs-3 position-absolute start-50 translate-middle-x"
         >
-          <%= titulo %>
-        </span>
+        <% if (titulo == 'alumnos') { %>
+            Alumnos
+        <% } else if (titulo == 'maestros') { %>
+            Maestros
+        <% } else if (titulo == 'materias') { %>
+            Materias
+        <% } else if (titulo == 'oferta_academica') { %>
+            Oferta Académica
+        <% } else if (titulo == 'grupos') { %>
+            Grupos
+        <% } else if (titulo == 'solicitudes') { %>
+            Solicitudes
+        <% } else if (titulo == 'planes') { %>
+            Plan de Estudio
         <% } %>
-
+        </span>
         <span>
           <a class="navbar-brand material-symbols-outlined fs-2">
             notifications
