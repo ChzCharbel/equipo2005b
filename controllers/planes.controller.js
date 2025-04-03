@@ -1,6 +1,7 @@
 exports.get_planes = (request, response, next) => {
     response.render('plan.ejs', {
-        titulo: 'plan',
+        titulo: 'Plan de Estudios',
         privilegios: request.session.privilegios || [],
+        ciclosEscolares: request.session.ciclosEscolares || [],
     });
 };

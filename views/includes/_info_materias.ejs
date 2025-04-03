@@ -66,32 +66,33 @@
 <div class="container">
     <div class="row">
         <% for (let materia of materias) { %>
-            <div class="col-sm-6 col-md-3 mb-4"> 
-                <div class="card" style="width: 100%;">
-                    <img src="/images/95404c.png" class="card-img-top" alt="color" height="150" />
-                    
-                    <div class="card-body">
-                        <h5 class="card-title"><%= materia.name %></h5>
-                        <button class="btn btn-primary btn-sm edit-btn" 
-                                data-bs-toggle="modal" 
-                                data-bs-target="#editModal" 
-                                data-id="<%= materia.id %>" 
-                                data-name="<%= materia.name %>" 
-                                data-profesor="<%= materia.profesor %>" 
-                                data-horario="<%= materia.horario %>" 
-                                data-salon="<%= materia.salon %>">
-                            <i class="bi bi-plus-lg"></i>
-                        </button>
+            <% if (materia.plans[0].degree.name == carrera && materia.plans[0].status == 'active') { %>
+                <div class="col-sm-6 col-md-3 mb-4"> 
+                    <div class="card" style="width: 100%;">
+                        <img src="/images/95404c.png" class="card-img-top" alt="color" height="150" />
+                        
+                        <div class="card-body">
+                            <h5 class="card-title"><%= materia.name %></h5>
+                            <button class="btn btn-primary btn-sm edit-btn" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#editModal" 
+                                    data-id="<%= materia.id %>" 
+                                    data-name="<%= materia.name %>" 
+                                    data-profesor="<%= materia.profesor %>" 
+                                    data-horario="<%= materia.horario %>" 
+                                    data-salon="<%= materia.salon %>">
+                                <i class="bi bi-plus-lg"></i>
+                            </button>
+                        </div>
+                        
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Profesor: <span><%= materia.profesor %></span></li>
+                            <li class="list-group-item">Horario: <span><%= materia.horario %></span></li>
+                            <li class="list-group-item">Salón: <span><%= materia.salon %></span></li>
+                        </ul>
                     </div>
-                    
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Profesor: <span><%= materia.profesor %></span></li>
-                        <li class="list-group-item">Horario: <span><%= materia.horario %></span></li>
-                        <li class="list-group-item">Salón: <span><%= materia.salon %></span></li>
-                    </ul>
                 </div>
-            </div>
-        <% } %>
+        <% } }%>
     </div>
 </div>
 
