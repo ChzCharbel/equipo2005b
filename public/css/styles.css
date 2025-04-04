@@ -1,102 +1,118 @@
 .custom-table {
-    border-collapse: separate;
-    border-spacing: 0;
+  border-collapse: separate;
+  border-spacing: 0;
 }
-.custom-table th, .custom-table td {
-    border: 1px solid #dee2e6;
-    padding: 0;
-    height: 30px;
+.custom-table th,
+.custom-table td {
+  border: 1px solid #dee2e6;
+  padding: 0;
+  height: 30px;
 }
 .color-block {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
-.bg-salmon { background-color: #640c0c !important; }
-.bg-purple { background-color: #611488 !important; }
-.bg-green { background-color: #1c1f82 !important; }
-.bg-blue { background-color: #4e86ac !important; }
-.bg-pink { background-color: #7b4974 !important; }
+.bg-salmon {
+  background-color: #640c0c !important;
+}
+.bg-purple {
+  background-color: #611488 !important;
+}
+.bg-green {
+  background-color: #1c1f82 !important;
+}
+.bg-blue {
+  background-color: #4e86ac !important;
+}
+.bg-pink {
+  background-color: #7b4974 !important;
+}
 
 .btn-primary {
-    background-color: #95404C;
-    border-color: #95404C;
+  background-color: #95404c;
+  border-color: #95404c;
 }
 
-.btn-primary:hover{
-    background-color: #581c24;
-    border-color: #95404C;
+.btn-primary:hover {
+  background-color: #581c24;
+  border-color: #95404c;
 }
 
 .navbar {
-    background-color: #95404C;
+  background-color: #95404c;
 }
 
 .navbar-brand {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .row-width {
-    width: 16%;
+  width: 16%;
 }
 
 .row-width-hour {
-    width: 5%;
+  width: 5%;
 }
 
 .hour {
-    text-align: center;
+  text-align: center;
 }
 
 .search-navbar {
-    margin: 20px;
+  margin: 20px;
 }
 
 .form-container {
-    margin-top: 150px;
-    margin-left: 150px;
-    margin-right: 150px;
+  margin-top: 150px;
+  margin-left: 150px;
+  margin-right: 150px;
 }
 
 .form-select {
-    font-size: 1.5rem;
-    /* Increase font size */
+  font-size: 1.5rem;
+  /* Increase font size */
 }
 
 .form-select option {
-    padding: 8px 10px;
-    /* Add more vertical padding for line spacing */
-    border-bottom: 1px solid #ccc;
-    /* Add gray divider line */
+  padding: 8px 10px;
+  /* Add more vertical padding for line spacing */
+  border-bottom: 1px solid #ccc;
+  /* Add gray divider line */
 }
 
 /* Remove border from the last option */
 .form-select option:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 #loginBody {
-    background-image: url(/images/background.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center top;
+  background-image: url(/images/background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
 }
 
 #loginLogo {
-    border: #ffffff;
-    border-width: 10px;
-    width: 250px;
-    height: 235px;
+  border: #ffffff;
+  border-width: 10px;
+  width: 250px;
+  height: 235px;
 }
 
 #loginCard {
-    width: 22rem;
+  width: 22rem;
 }
 
 .notificaciones {
-    max-width: 280px;
-    max-height: 200px;
+  max-width: 280px;
+  max-height: 200px;
 }
 
 .modalProfesor {
-    max-width: 80rem;
+  max-width: 80rem;
+}
+
+.profile-icon {
+  position: relative;
+  top: -12px;
 }
