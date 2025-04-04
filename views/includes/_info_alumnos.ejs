@@ -2,15 +2,20 @@
     <nav class="navbar bg-body-tertiary search-nav justify-content-end">
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
-
-              <label class="label" for="buscar">Buscar: </label>
-              <input
+            <form class="d-flex" role="search">
+               <input
                id="buscar"
                 name="buscar"
-                class="input is-info"
-                type="text"
+                class="form-control me-2"
+                type="search"
                placeholder="Alumno"
-              />
+               aria-label="Search" 
+              >
+              <button class="btn btn-outline-success" type="submit">
+                Buscar
+            </button> 
+            </form>
+              
 
             <br><br>  
             </div>
@@ -66,7 +71,7 @@
   buscar.onkeyup = () => {
       console.log(buscar.value);
 
-      fetch('/:idCiclo/alumnos/buscar/' + buscar.value, {
+      fetch('/alumnos/:idCiclo/buscar/' + buscar.value, {
             method: 'GET',
         }).then((result) => {
             console.log(result)

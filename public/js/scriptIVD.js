@@ -54,5 +54,8 @@ function visibleToggle() {
     }
 }
 
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+
 const myModal = document.getElementById('myModal')
 const myInput = document.getElementById('myInput')

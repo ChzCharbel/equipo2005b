@@ -18,6 +18,8 @@ exports.get_materias = (request, response, next) => {
             carrera: request.session.carrera || '',
             ciclosEscolares: request.session.ciclosEscolares || [],
             cicloActual: request.params.idCiclo || '',
+            username: request.session.username || '',
+            mail: request.session.mail || '',
         });
     }).catch((error) => {
         console.log(error);
