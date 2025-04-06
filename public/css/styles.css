@@ -116,3 +116,8 @@
   position: relative;
   top: -12px;
 }
+
+.contenedor-con-margen {
+  margin: 20px auto;
+  max-width: 800px; /* ancho máximo */
+}
