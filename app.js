@@ -71,6 +71,9 @@ app.get('/v1/students/academic_history/:ivd_id',
     },
 )
 
+const enlistaRoutes = require('./routes/enlista.routes');
+app.use('/enlista', enlistaRoutes);
+
 const alumnosRoutes = require('./routes/alumnos.routes');
 app.use('/alumnos', alumnosRoutes);
 
