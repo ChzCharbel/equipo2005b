@@ -1,8 +1,10 @@
 const Materia = require('../models/materias.model');
+const OfertaAcademica = require('../models/oferta.model');
 
 exports.get_oferta = (request, response, next) => {
-    Materia.getAllCourses().then((materias) => {
+    Materia.getAllCourses().then((allMaterias) => {
         //console.log(materias);
+        const materias = OfertaAcademica.sortByDegree(allMaterias, request.session.carrera);
         response.render('oferta_academica.ejs', {
             titulo: 'oferta_academica',
             privilegios: request.session.privilegios || [],
