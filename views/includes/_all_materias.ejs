@@ -16,12 +16,26 @@
                     <a class="nav-link link-dark active" href="/oferta_academica/<%= cicloActual %>/agregar" onclick="changeTabs('hola')">Agregar materias</a>
                 </li>
         </div>
-        Versión de Plan:
         <div class="col-auto">
-            <select class="form-select" id="planVersion" aria-label="Plan de Estudios">
-                <option value="7">7</option>
-                <option value="8">8</option>
-            </select>
+            <div class="dropdown">
+                <a
+                class="nav-link dropdown-toggle text-dark"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                data-bs-target="#dropdown-planes"
+                aria-expanded="false"
+            >
+                Versión del Plan
+            </a>
+            <ul class="dropdown-menu" id="dropdown-planes">
+                <% for (let plan of planes) { %>
+                    <li>
+                        <a class="dropdown-item" href="/oferta_academica/<%=ciclosEscolares[0].idCicloEscolar %>/<%= plan %>"><%= plan %></a> 
+                    </li>
+                <% } %>
+            </ul>
+            </div>
         </div>
         <div class="col-auto justify-content-end">
 
@@ -64,12 +78,20 @@
         <div class="tab-content" id="v-pills-tabContent">
           <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab" tabindex="0">
             <div class="row">
+                <% if (planActual == 'plan_version') { %>
+                        <div class="row text-center">
+                            <div class="col-9 offset-2 alert alert-warning fw-semibold mb-4" role="alert">
+                                Selecciona una versión del Plan de Estudio
+                            </div>
+                        </div>
+                <% } %>
                 <% 
                 let count = 0; 
                 for (let i = 0; i < materias.length; i++) {
                 const materia = materias[i];
                 if ((materia.plans[0].status == 'active') &&
-                    (materia.plans_courses[0].semester == 1) //&&(materia.plans[0].id == getPlanVersion())
+                    (materia.plans_courses[0].semester == 1) && 
+                    (materia.plans[0].id == planActual)
                 ) {
                     if (count % 4 === 0) { %>
                     </div><div class="row">
@@ -99,6 +121,13 @@
           </div>
           <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab" tabindex="0">
             <div class="row">
+                <% if (planActual == 'plan_version') { %>
+                        <div class="row text-center">
+                            <div class="col-9 offset-2 alert alert-warning fw-semibold mb-4" role="alert">
+                                Selecciona una versión del Plan de Estudio
+                            </div>
+                        </div>
+                <% } %>
                 <% 
                 let count2 = 0; 
                 for (let i = 0; i < materias.length; i++) {
@@ -134,6 +163,13 @@
           </div>
           <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab" tabindex="0">
             <div class="row">
+                <% if (planActual == 'plan_version') { %>
+                        <div class="row text-center">
+                            <div class="col-9 offset-2 alert alert-warning fw-semibold mb-4" role="alert">
+                                Selecciona una versión del Plan de Estudio
+                            </div>
+                        </div>
+                <% } %>
                 <% 
                 let count3 = 0; 
                 for (let i = 0; i < materias.length; i++) {
