@@ -6,24 +6,29 @@ const profesores = JSON.parse(allProfesores);
 
 // Referencia al modal
 for (let profesor of profesores) {
-  let profModalPrueba = document.getElementById("profModal" + profesor.matriculaProfesor);
+  let profModalPrueba = document.getElementById(
+    "profModal" + profesor.matriculaProfesor
+  );
   profModalPrueba.addEventListener("show.bs.modal", function (event) {
-  console.log('PROFESss: ' + profesores[0].matriculaProfesor + ' ' + profesores[0].nombreProfesor);
-  const button = event.relatedTarget; // Botón que abrió el modal
-  let profName = button.getAttribute("data-prof-name"); // Nombre del profesor
-  let profMatricula = button.getAttribute("data-prof-id"); // Matricula del profesor
-  console.log('matricula:' +  profMatricula);
-  console.log('nombre:' +  profName);
-  document.getElementById("profName").textContent = profName;
-  console.log(
-      `Disponibilidad actualizada para ${profName}`
+    console.log(
+      "PROFESss: " +
+        profesores[0].matriculaProfesor +
+        " " +
+        profesores[0].nombreProfesor
     );
+    const button = event.relatedTarget; // Botón que abrió el modal
+    let profName = button.getAttribute("data-prof-name"); // Nombre del profesor
+    let profMatricula = button.getAttribute("data-prof-id"); // Matricula del profesor
+    console.log("matricula:" + profMatricula);
+    console.log("nombre:" + profName);
+    document.getElementById("profName").textContent = profName;
+    console.log(`Disponibilidad actualizada para ${profName}`);
   });
 }
 const profModal = document.getElementById("profModalIVD012902");
 
 function guardarHorario2() {
-  console.log('Guardar horario profesor');
+  console.log("Guardar horario profesor");
   document.getElementById("demo").innerHTML = "Hello World";
 }
 

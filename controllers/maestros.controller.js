@@ -8,17 +8,17 @@ exports.get_all_maestros = (request, response, next) => {
       response.render("profesores.ejs", {
         titulo: "maestros",
         privilegios: request.session.privilegios || [],
-        carrera: request.session.carrera || '',
+        carrera: request.session.carrera || "",
         profesores: request.session.profesores || [],
         ciclosEscolares: request.session.ciclosEscolares || [],
-        cicloActual: request.params.idCiclo || '',
-        username: request.session.username || '',
-        mail: request.session.mail || '',
-        rol: request.session.rol || '',
+        cicloActual: request.params.idCiclo || "",
+        username: request.session.username || "",
+        mail: request.session.mail || "",
+        rol: request.session.rol || "",
       });
     })
     .catch((error) => {
       console.log(error);
-      response.render('error.ejs');
+      response.render("error.ejs");
     });
 };
