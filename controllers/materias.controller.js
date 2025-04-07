@@ -20,6 +20,7 @@ exports.get_materias = (request, response, next) => {
             cicloActual: request.params.idCiclo || '',
             username: request.session.username || '',
             mail: request.session.mail || '',
+            rol: request.session.rol || '',
         });
     }).catch((error) => {
         console.log(error);

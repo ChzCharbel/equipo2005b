@@ -15,6 +15,7 @@ exports.get_oferta = (request, response, next) => {
         mail: request.session.mail || '',
         planes: planVersiones || [],
         planActual: request.params.idPlan || '',
+        rol: request.session.rol || '',
     })    
     })
 }
