@@ -5,8 +5,11 @@ exports.get_horario_alumnos_regulares = (request, response, next) => {
         titulo: 'alumnos_regulares',
         privilegios: request.session.privilegios || [],
         carrera: request.session.carrera || '',
+        ciclosEscolares: request.session.ciclosEscolares || [],
+            cicloActual: request.params.idCiclo || '',
         username: request.session.username || '',
         mail: request.session.mail || '',
+        grupos: [],
     });
 };
 
@@ -25,6 +28,7 @@ exports.get_alumnos = (request, response, next) => {
             cicloActual: request.params.idCiclo || '',
             username: request.session.username || '',
             mail: request.session.mail || '',
+            grupos: [],
         });
 
     }).catch((error) => {
@@ -47,8 +51,11 @@ exports.get_horario_alumnos_irregulares = (request, response, next) => {
     response.render('horario_alumnos_irregulares.ejs', {
         titulo: 'alumnos_irregulares',
         carrera: request.session.carrera || '',
+        ciclosEscolares: request.session.ciclosEscolares || [],
+        cicloActual: request.params.idCiclo || '',
         privilegios: request.session.privilegios || [],
         username: request.session.username || '',
         mail: request.session.mail || '',
+        grupos: [],
     });
 };

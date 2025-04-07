@@ -89,7 +89,15 @@ exports.post_login = (request, response, next) => {
                                 })
                             }
                             else {
-                                response.redirect('/alumnos/regulares/' + ciclos.rows[0].idCicloEscolar);
+                                CicloEscolar.fetchAll().then((ciclos) => {
+                                    console.log(ciclos.rows);
+                                    request.session.ciclosEscolares = ciclos.rows;
+                                    request.session.cicloActual = ciclos.rows[ciclos.rows.length - 1].idCicloEscolar;
+                                    response.redirect('/enlista/alumno/' + request.session.cicloActual);
+                                }).catch((error) => {
+                                    console.log(error);
+                                })
+                                
                             }
                         });
                     }).catch((error) => {
