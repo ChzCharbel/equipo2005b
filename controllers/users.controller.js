@@ -93,7 +93,7 @@ exports.post_login = (request, response, next) => {
                                     console.log(ciclos.rows);
                                     request.session.ciclosEscolares = ciclos.rows;
                                     request.session.cicloActual = ciclos.rows[ciclos.rows.length - 1].idCicloEscolar;
-                                    response.redirect('/enlista/alumno/' + request.session.cicloActual);
+                                    response.redirect('/enlista/alumno/');
                                 }).catch((error) => {
                                     console.log(error);
                                 })

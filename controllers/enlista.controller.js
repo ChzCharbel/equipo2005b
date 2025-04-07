@@ -32,7 +32,15 @@ exports.get_enlista = (req, res, next) => {
           viernesInicio: row.viernesInicio,
           viernesFin: row.viernesFin
         }));
-            res.render('horario_alumnos_regulares', { grupos, titulo: 'Horario de Clases' });
+        res.render('horario_alumnos_regulares', {
+            grupos,
+            titulo: 'Horario de Clases',
+            username: req.session.username || '',
+            mail: req.session.mail || '',
+            carrera: req.session.carrera || '',
+            privilegios: req.session.privilegios || [],
+            cicloActual: req.session.cicloActual || ''
+          });
         })
         .catch(err => {
             console.error('Error al obtener grupos:', err);

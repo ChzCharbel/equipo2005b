@@ -30,7 +30,9 @@
             />
           </a>
         </span>
-        <%- include('./_dropdown_ciclos') %> 
+        <% if (titulo !== 'Horario de Clases') { %>
+            <%- include('./_dropdown_ciclos') %> 
+        <% } %>
         <span
           class="navbar-brand mb-0 fs-3 position-absolute start-50 translate-middle-x"
         >

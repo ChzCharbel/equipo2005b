@@ -6,6 +6,6 @@ const canView = require('../util/canViewAssignedGroups');
 
 const enlistaController = require('../controllers/enlista.controller');
 
-router.get('/alumno/:idCiclo', isAuth, canView, enlistaController.get_enlista);
+router.get('/alumno', isAuth, canView, enlistaController.get_enlista);
 
 module.exports = router;
