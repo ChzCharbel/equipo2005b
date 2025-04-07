@@ -1,5 +1,4 @@
 const Usuario = require('../models/users.model');
-const Alumnos = require('../models/alumnos.model');
 const CicloEscolar = require('../models/ciclos.model');
 const {getUserById, getUserGroups, getAcademicHistory} = require('../util/admin.api.client');
 
@@ -59,70 +58,67 @@ exports.get_login = (request, response, next) => {
 };
 
 exports.post_login = (request, response, next) => {
-  const { matriculaInput, passwordInput } = request.body;
-  console.log(matriculaInput, passwordInput);
-
-  Usuario.fetchOne(matriculaInput)
-    .then(usuario => {
-      if (usuario.rows.length === 0) {
-        request.session.warning = 'Usuario y/o contraseña incorrectos';
-        return response.redirect('/users/login');
-      }
-
-      const userData = usuario.rows[0];
-      return require('bcryptjs').compare(passwordInput, userData.password)
-        .then(doMatch => {
-          if (!doMatch) {
-            request.session.warning = 'Usuario y/o contraseña incorrectos';
-            return response.redirect('/users/login');
-          }
-
-          request.session.privilegios = [];
-          request.session.isLoggedIn = true;
-          request.session.matricula = matriculaInput;
-          request.session.user_id = userData.idIVD;
-          request.session.username = userData.nombreUsuario;
-          request.session.mail = userData.correoInstitucional;
-          request.session.rol = userData.rol;
-
-          return Usuario.getPrivilegios(userData.idIVD)
-            .then(privilegios => {
-              request.session.privilegios = privilegios.rows;
-
-              return Alumnos.fetchOne(matriculaInput)
-                .then(alumnoResult => {
-                  if (alumnoResult.rows.length > 0) {
-                    const alumno = alumnoResult.rows[0];
-                    request.session.carrera = alumno.carrera;
-                    request.session.semestre = alumno.semestre;
-                    request.session.regular = alumno.regular;
-                    console.log('Carrera del alumno:', alumno.carrera);
-                  } else {
-                    request.session.carrera = 'No definida';
-                    console.log('Alumno no encontrado');
-                  }
-
-                  return request.session.save(error => {
-                    if (error) console.error('Error guardando sesión:', error);
-
-                    return CicloEscolar.fetchAll()
-                      .then(ciclos => {
-                        request.session.ciclosEscolares = ciclos.rows;
-                        if (userData.rol === 'admin') {
-                          return response.redirect('/inicio/' + ciclos.rows[0].idCicloEscolar);
-                        } else {
-                          request.session.cicloActual = ciclos.rows[ciclos.rows.length - 1].idCicloEscolar;
-                          return response.redirect('/enlista/alumno');
-                        }
-                      });
-                  });
-                });
+    console.log(request.body.matriculaInput);
+    console.log(request.body.passwordInput);
+    Usuario.fetchOne(request.body.matriculaInput).then((usuario) => {
+        console.log(usuario.rows);
+        if(usuario.rows.length > 0) {
+            const bcrypt = require('bcryptjs');
+            console.log(usuario.rows[0]);
+            bcrypt.compare(request.body.passwordInput, usuario.rows[0].password).then((doMatch) => {
+                if (doMatch) {
+                    Usuario.getPrivilegios(usuario.rows[0].idIVD).then((privilegios) => {
+                        console.log(privilegios.rows);
+                        request.session.privilegios = privilegios.rows;
+                        request.session.isLoggedIn = true;
+                        request.session.matricula = request.body.matriculaInput;
+                        request.session.user_id = usuario.rows[0].idIVD;
+                        request.session.carrera = usuario.rows[0].carrera;
+                        request.session.username = usuario.rows[0].nombreUsuario;
+                        request.session.mail = usuario.rows[0].correoInstitucional;
+                        request.session.rol = usuario.rows[0].rol;
+                        console.log('Carrera del usuario: ' + request.session.carrera);
+                        
+                        return request.session.save((error) => {
+                            if (usuario.rows[0].rol == 'admin'){
+                                CicloEscolar.fetchAll().then((ciclos) => {
+                                    console.log(ciclos.rows);
+                                    request.session.ciclosEscolares = ciclos.rows;
+                                    response.redirect('/inicio/' + ciclos.rows[0].idCicloEscolar);
+                                }).catch((error) => {
+                                    console.log(error);
+                                })
+                            }
+                            else {
+                                CicloEscolar.fetchAll().then((ciclos) => {
+                                    console.log(ciclos.rows);
+                                    request.session.ciclosEscolares = ciclos.rows;
+                                    request.session.cicloActual = ciclos.rows[ciclos.rows.length - 1].idCicloEscolar;
+                                    response.redirect('/enlista/alumno/');
+                                }).catch((error) => {
+                                    console.log(error);
+                                })
+                                
+                            }
+                        });
+                    }).catch((error) => {
+                        console.log(error);
+                    });
+                } else {
+                    request.session.warning = `Usuario y/o contraseña incorrectos`;
+                    console.log(request.session.warning);
+                    response.redirect('/users/login');
+                }
+            }).catch((error) => {
+                console.log(error);
             });
-        });
-    })
-    .catch(error => {
-      console.error('Error general en login:', error);
-      response.status(500).send('Error interno del servidor');
+        } else {
+            request.session.warning = `Usuario y/o contraseña incorrectos`;
+            response.redirect('/users/login');
+        }
+    }).catch((error) => {
+        console.log(error);
+        console.log('Error fetching user');
     });
 };
 
