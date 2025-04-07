@@ -4,6 +4,18 @@
         <h3 class="text-center mt-5">Materias</h3>
   
         <% if (grupos && grupos.length > 0) { %>
+          <% const colores = ['bg-primary', 'bg-success', 'bg-warning', 'bg-danger', 'bg-info', 'bg-secondary', 'bg-dark'];
+          const materiasColor = {};
+          let colorIndex = 0;
+
+          grupos.forEach(grupo => {
+            const nombre = grupo.materia.nombre;
+            if (!materiasColor[nombre]) {
+              materiasColor[nombre] = colores[colorIndex % colores.length];
+              colorIndex++;
+            }
+          });
+        %>
           <% grupos.forEach((grupo, index) => { %>
             <!-- Tarjeta de la materia -->
             <div class="card m-3">
@@ -16,7 +28,8 @@
                       Ver más
                     </button>
                   </div>
-                  <div class="col-1 bg-blue rounded-start"></div>
+                  <% const color = materiasColor[grupo.materia.nombre] || 'bg-light'; %>
+                  <div class="col-1 <%= color %> rounded-start"></div>
                 </div>
               </div>
             </div>
