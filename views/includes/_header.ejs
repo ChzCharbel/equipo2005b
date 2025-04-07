@@ -30,9 +30,13 @@
             />
           </a>
         </span>
+        <% if (rol == 'admin') { %>
         <%- include('./_dropdown_ciclos') %> 
+        <% } else { %>
+            <div class="col-10"></div>
+        <% } %>
         <span
-          class="navbar-brand mb-0 fs-3 position-absolute start-50 translate-middle-x"
+          class="mb-0 fs-3 position-absolute start-50 translate-middle-x text-light"
         >
         <% if (titulo == 'alumnos') { %>
             Alumnos
@@ -48,6 +52,8 @@
             Solicitudes
         <% } else if (titulo == 'planes') { %>
             Plan de Estudio
+        <% } else if (titulo == 'Horario de Clases') { %>
+            Horario de Clases
         <% } %>
         </span>
         <span>

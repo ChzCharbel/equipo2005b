@@ -2,7 +2,6 @@ const EnlistaModel = require('../models/enlista.model');
 
 exports.get_enlista = (req, res, next) => {
     const matricula = req.session.matricula;
-
     if (!matricula) {
         return res.status(401).send('Sesión no iniciada.');
     }
@@ -32,7 +31,17 @@ exports.get_enlista = (req, res, next) => {
           viernesInicio: row.viernesInicio,
           viernesFin: row.viernesFin
         }));
-            res.render('horario_alumnos_regulares', { grupos, titulo: 'Horario de Clases' });
+            res.render('horario_alumnos_regulares', { 
+              grupos, 
+              titulo: 'Horario de Clases', 
+              privilegios: req.session.privilegios || [],
+              carrera: req.session.carrera || '',
+              ciclosEscolares: req.session.ciclosEscolares || [],
+              cicloActual: req.params.idCiclo || '',
+              username: req.session.username || '',
+              mail: req.session.mail || '',
+              rol: req.session.rol || '',
+            });
         })
         .catch(err => {
             console.error('Error al obtener grupos:', err);
