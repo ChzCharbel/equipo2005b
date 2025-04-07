@@ -4,7 +4,7 @@ exports.get_oferta = (request, response, next) => {
     Materia.fetchByDegree(request.session.carrera).then((data) => {
     const materias = data[0];
     const planVersiones = data[1];
-    response.render('oferta_academica.ejs', {
+    response.render('oferta_academica.ejs',{
         titulo: 'oferta_academica',
         privilegios: request.session.privilegios || [],
         materias: materias,

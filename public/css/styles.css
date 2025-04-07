@@ -70,17 +70,13 @@
 
 .form-select {
   font-size: 1.5rem;
-  /* Increase font size */
 }
 
 .form-select option {
   padding: 8px 10px;
-  /* Add more vertical padding for line spacing */
   border-bottom: 1px solid #ccc;
-  /* Add gray divider line */
 }
 
-/* Remove border from the last option */
 .form-select option:last-child {
   border-bottom: none;
 }
@@ -119,5 +115,10 @@
 
 .contenedor-con-margen {
   margin: 20px auto;
-  max-width: 800px; /* ancho máximo */
+  max-width: 800px; 
+}
+
+.texto-pequeno {
+  font-size: 0.75rem;
+  color: #6c757d; /* grisecito para que se vea más como placeholder */
 }
