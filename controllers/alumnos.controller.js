@@ -10,6 +10,7 @@ exports.get_horario_alumnos_regulares = (request, response, next) => {
         username: request.session.username || '',
         mail: request.session.mail || '',
         grupos: [],
+        rol: request.session.rol || '',
     });
 };
 
@@ -29,6 +30,7 @@ exports.get_alumnos = (request, response, next) => {
             username: request.session.username || '',
             mail: request.session.mail || '',
             grupos: [],
+            rol: request.session.rol || '',
         });
 
     }).catch((error) => {
@@ -57,5 +59,6 @@ exports.get_horario_alumnos_irregulares = (request, response, next) => {
         username: request.session.username || '',
         mail: request.session.mail || '',
         grupos: [],
+        rol: request.session.rol || '',
     });
 };

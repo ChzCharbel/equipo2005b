@@ -76,6 +76,7 @@ exports.post_login = (request, response, next) => {
                         request.session.carrera = usuario.rows[0].carrera;
                         request.session.username = usuario.rows[0].nombreUsuario;
                         request.session.mail = usuario.rows[0].correoInstitucional;
+                        request.session.rol = usuario.rows[0].rol;
                         console.log('Carrera del usuario: ' + request.session.carrera);
                         
                         return request.session.save((error) => {

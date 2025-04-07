@@ -16,6 +16,7 @@ exports.get_inicio = (request, response, next) => {
                 cicloActual: idCiclo,
                 username: request.session.username || '',
                 mail: request.session.mail || '',
+                rol: request.session.rol || '',
             });
         })
         .catch(err => {
