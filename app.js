@@ -29,6 +29,11 @@ const csrf = require('csurf');
 const csrfProtection = csrf(); 
 app.use(csrfProtection); 
 
+app.use((req, res, next) => {
+    res.locals.csrfToken = req.csrfToken ? req.csrfToken() : '';
+    next();
+  });
+
 const usersRoutes = require('./routes/users.routes');
 app.use('/users', usersRoutes); 
 

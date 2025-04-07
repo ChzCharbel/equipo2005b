@@ -2,13 +2,17 @@ const db = require('../util/database');
 
 module.exports = class CicloEscolar {
     constructor(mi_id, mi_fecha_inicio, mi_fecha_fin) {
-        this.id = mi_id;
-        this.fechaInicio = mi_fecha_inicio;
-        this.fechaFin = mi_fecha_fin;
+      this.id = mi_id;
+      this.fechaInicio = mi_fecha_inicio;
+      this.fechaFin = mi_fecha_fin;
     }
-
+  
     save() {
-        return db.query(`INSERT INTO "CicloEscolar" VALUES ($1::text, $2::text, $3::text);`, [this.id, this.fechaInicio, this.fechaFin]);
+      return db.query(`
+        UPDATE "CicloEscolar"
+        SET "inicioInscripcion" = $1::date, "finInscripcion" = $2::date
+        WHERE "idCicloEscolar" = $3::text
+      `, [this.fechaInicio, this.fechaFin, this.id]);
     }
 
     static fetchAll() {

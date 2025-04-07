@@ -2,26 +2,43 @@
   <h1 id="bienvenida"></h1>
   <p id="inscripciones"></p>
 
-  <h1>¡Bienvenido administrador!</h1>
+  <h1>¡Bienvenido <%= username %>!</h1>
   <br>
   <p>Indica la fecha de la semana de inscripciones:</p>
 
-  <div class="mb-3">
-    <br>
-    <label for="formGroupExampleInput" class="form-label">Fecha de inicio</label>
-    <div></div>
-    <small><small>Primer día para que los alumnos ingresen a confirmar su horario</small></small>
-    <input type="date" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
-  </div>
+  <form action="/inicio/<%= cicloActual %>" method="POST">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <div class="mb-3">
+      <br>
+      <label for="fechaInicio" class="form-label">Fecha de inicio</label>
+      <div></div>
+      <small><small>Primer día para que los alumnos ingresen a confirmar su horario</small></small>
+      <input type="date" class="form-control" id="fechaInicio" name="fechaInicio" required>
+    </div>
+  
+    <div class="mb-3">
+      <label for="fechaFin" class="form-label">Fecha final</label>
+      <div></div>
+      <small><small>Último día para que los alumnos ingresen a confirmar su horario</small></small>
+      <input type="date" class="form-control" id="fechaFin" name="fechaFin" required>
+    </div>
+  
+    <!-- Botón de guardar -->
+    <button type="submit" class="btn btn-success">Guardar inscripción</button>
+  </form>
+  
 
-  <div class="mb-3">
-    <label for="formGroupExampleInput2" class="form-label">Fecha final</label>
-    <div></div>
-    <small><small>Último día para que los alumnos ingresen a confirmar su horario</small></small>
-    <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
-  </div>
-
-  <p>La fecha de inscripciones es del 10 de abril al 20 de abril.</p>
+  <% if (ciclo.inicioInscripcion && ciclo.finInscripcion) { %>
+    <p>
+      La fecha de inscripciones es del 
+      <%= new Date(ciclo.inicioInscripcion).toLocaleDateString('es-MX', { day: 'numeric', month: 'long' }) %> 
+      al 
+      <%= new Date(ciclo.finInscripcion).toLocaleDateString('es-MX', { day: 'numeric', month: 'long' }) %>.
+    </p>
+  <% } else { %>
+    <p>Aún no se han definido las fechas de inscripción para este ciclo.</p>
+  <% } %>
+    
 </div>
 
 
