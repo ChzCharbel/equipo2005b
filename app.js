@@ -32,7 +32,14 @@ const multer = require("multer");
 
 const csrf = require("csurf");
 const csrfProtection = csrf();
-app.use(csrfProtection);
+
+app.use((req, res, next) => {
+  if (req.path.startsWith("/disponible")) {
+    return next(); // ⛔️ omitir CSRF para esa ruta
+  }
+  csrfProtection(req, res, next); // ✅ aplicarlo para las demás
+});
+
 
 app.use((req, res, next) => {
   res.locals.csrfToken = req.csrfToken ? req.csrfToken() : "";
@@ -99,8 +106,8 @@ app.use("/planes", planesRoutes);
 const ofertaRoutes = require("./routes/oferta.routes");
 app.use("/oferta_academica", ofertaRoutes);
 
-const disponibilidadRoutes = require("./routes/maestros.routes");
-app.use(express.json());
-app.use(disponibilidadRoutes);
+const disponibleRoutes = require("./routes/disponible.routes");
+app.use("/disponible", disponibleRoutes);
+
 
 app.listen(3000);
